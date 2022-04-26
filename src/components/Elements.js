@@ -224,7 +224,7 @@ export const Grid3Col = styled.div`
   ${mq.tablet_up`
     display:grid;
      align-items: start;
-    grid-template-columns: 1fr 1.32fr 1fr;  
+    grid-template-columns: 1fr 1fr 1fr;  
     column-gap:4rem;   
     
     

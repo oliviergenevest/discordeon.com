@@ -35,7 +35,7 @@ display:flex;
 position: relative;
 flex-direction:row;
 width:100%;
-margin-bottom:5rem;
+margin-bottom:10rem;
 /*gap:3rem;*/
 ${mq.mobile`
 flex-direction:column;

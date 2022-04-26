@@ -18,7 +18,7 @@ import {
   Text,
   Flex,
   BgWrap,
-  Grid2Col,
+  Grid3Col,
   Spacer,
 } from "../components/Elements"
 
@@ -37,6 +37,11 @@ const FlexProjetsPerso = styled(Flex)`
 
 `;
 
+const StyledGrid3Col = styled(Grid3Col)`
+margin-left:15rem;
+`;
+
+
 
 export const projetsPageQuery = graphql`
   query projetsQuery($locale: String) {
@@ -54,7 +59,7 @@ export const projetsPageQuery = graphql`
               placeholder: BLURRED,
               forceBlurhash: false,   
               width:550,
-            
+              height:350,
             )
           }
       }
@@ -69,6 +74,7 @@ export const projetsPageQuery = graphql`
               placeholder: BLURRED,
               forceBlurhash: false,   
               width:360,
+              height:250,
             
             )
           }
@@ -84,6 +90,7 @@ export const projetsPageQuery = graphql`
               placeholder: BLURRED,
               forceBlurhash: false,   
               width:360,
+              height:250,
             
             )
           }
@@ -116,28 +123,32 @@ const ProjetsPage =  ({ data }) => {
         <BgWrap color={colors.blueLight}>
           <FlexProjetsPerso>
             { _map(projetsPerso, (item, i) => (
-                  <VignetteProjetPerso key={i} item={item}/>
+                  <VignetteProjetPerso key={i} item={item} format="full"/>
             ))}
            </FlexProjetsPerso>
         </BgWrap>
         <Spacer/>
         <PageInner>
           <TitleProjet>{titreProjetsActuels}</TitleProjet>
-          <Flex>
+         
+          <StyledGrid3Col>
             { _map(projetsActuels, (item, i) => (
-                  <VignetteProjetPerso key={i} item={item}/>
+                  <VignetteProjetPerso key={i} item={item} format="short"/>
             ))}
-          </Flex>
+          </StyledGrid3Col>
         </PageInner>
-        <PageInner>
+        <Spacer/>
+        <Spacer/>
+        <PageInner>         
           <TitleProjet>{titreProjetsPasses}</TitleProjet>
-          <Flex>
+          <StyledGrid3Col>
             { _map(projetsPasses, (item, i) => (
-                  <VignetteProjetPerso key={i} item={item}/>
+                  <VignetteProjetPerso key={i} item={item} format="short"/>
             ))}
-          </Flex>
+          </StyledGrid3Col>
         </PageInner>
-
+        <Spacer/>
+        <Spacer/>
       </PageWrapper>
     </Fragment>
   )

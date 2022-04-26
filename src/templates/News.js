@@ -1,11 +1,11 @@
 import React, { Fragment, useRef } from "react"
 import { graphql } from "gatsby"
-
+import { Icon } from '@iconify/react';
 import Img from "gatsby-image"
 import styled from "styled-components"
 import _map from "lodash/map"
 import { GatsbyImage } from 'gatsby-plugin-image';
-
+import FormatDate  from '../components/formatDate'
 import BtnPrimary from "../components/buttons/ButtonRounded"
 import {
   Banner,
@@ -33,8 +33,8 @@ const PageInnerNews = styled.div`
   position: relative;
   display: grid;
 
-  grid-template-columns: 2fr 1fr;
-  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  grid-template-columns: 1fr 2fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   grid-gap: 5rem;
 
   ${mq.tablet` 
@@ -45,6 +45,27 @@ const PageInnerNews = styled.div`
 `
 
 
+const LeftContainer =   styled.div`
+  background: #EBEBF3;
+  padding: 2.5rem;
+  padding-right:5rem;
+  color:${colors.blue};
+`
+
+
+const NewsItemDate =   styled.div`
+  display:flex;
+  width:100%;
+  align-items:center;
+  justify-content:flex-start;
+  gap:.8rem;
+  color:${colors.dark};
+  font-size:1.4rem;
+  svg path:first-of-type {
+   fill: ${colors.yellow};
+  }
+ 
+`
 
 
 const News = ({ data, pageContext, location }) => {
@@ -53,6 +74,7 @@ const News = ({ data, pageContext, location }) => {
     image,
     teaser,
     contenu,
+    meta,
     seoMetaTags
   } = data.news
  
@@ -65,36 +87,51 @@ const News = ({ data, pageContext, location }) => {
         <PageInner>
           <PageTitle>News</PageTitle>
           <Title maxWidth centered>{titre}</Title>
-          <Banner height="520px">
-          <GatsbyImage image={image.gatsbyImageData} alt={titre} />
-
-          </Banner>
+          <Spacer /> 
+          <div style={{textAlign:"center"}}>
+            <GatsbyImage image={image.gatsbyImageData} alt={titre} />
+          </div>
         </PageInner>
+        <PageInner>
+        <Spacer /> 
         <PageInnerNews>
-        
+          <LeftContainer>
+                  <NewsItemDate>
+                    <Icon title="Date" icon="ant-design:calendar-twotone" style={{color: colors.dark, fontSize: '20px'}} />
+                    <FormatDate date={meta.createdAt}/>
+                  </NewsItemDate>
+               
+                  <Text dangerouslySetInnerHTML={{ __html:teaser }}/>
+          </LeftContainer>
+          
+          <Text dangerouslySetInnerHTML={{ __html:contenu}}/>
         </PageInnerNews>
-
+        </PageInner>
         <Spacer />
       </PageWrapper>
     </Fragment>
   )
 }
 
-export const projectQuery = graphql`
+export const newsQuery = graphql`
   query($slug: String!, $locale: String!) {
     news: datoCmsActualite(slug: { eq: $slug }, locale: { eq: $locale }) {
       titre
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
+      teaser
       contenu
+      meta {
+        createdAt
+      }
       id
       image{
         gatsbyImageData(
           
           placeholder: BLURRED,
           forceBlurhash: false,
-         
+         width:1200
          
         )
       }

@@ -136,7 +136,7 @@ export const font = {
             font-style: normal;
             font-weight: 400;
             line-height: 27px;
-
+            word-break: break-word;
             @media screen and (max-width: ${mQueryPoint.tablet}) {
               font-size: 1.6rem;
             }

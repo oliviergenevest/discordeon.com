@@ -141,20 +141,26 @@ const LineHeading = styled.div`
 
 const Projet = ({ data, pageContext, location }) => {
 
-  const { id, nom, imagePrincipale, seoMetaTags} = data.projet;
+  const { id, nom, teaser, contenu, description, imagePrincipale, seoMetaTags} = data.projet;
   return (
     <Fragment>
       <Seo meta={seoMetaTags} />
       
       <PageWrapper>
         <PageInner>
+       
           <PageTitle>Projets</PageTitle>
+          <Title maxWidth centered>{nom}</Title>
         </PageInner>
-        <Title maxWidth centered>{nom}</Title>
+       
         <PageInner>
-      
+        <Spacer /> 
+          <div style={{textAlign:"center"}}>
           <GatsbyImage image={imagePrincipale.gatsbyImageData} alt={nom}/>
-
+          </div>
+          <Spacer /> 
+          <Text dangerouslySetInnerHTML={{ __html:teaser }}/>
+          <Text dangerouslySetInnerHTML={{ __html:contenu }}/>
         
         
         

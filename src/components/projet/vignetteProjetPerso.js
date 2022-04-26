@@ -13,7 +13,7 @@ const ItemWrapper = styled(Link)`
   display:flex;
   position: relative;
   flex-direction:column;
-  width: 550px;
+  max-width: 550px;
   margin-bottom:1rem;
   background:white;
   justify-content: center;
@@ -26,8 +26,9 @@ const ItemWrapper = styled(Link)`
 `
 const VignetteNom =   styled.h2`
   ${font.h2}  
-  text-align:center;
+  text-align:  ${props => (props.center  ? 'center' : 'left' )};
   margin-bottom:0;
+
 `
 const VignetteImage =   styled(GatsbyImage)`
   display:flex;
@@ -46,14 +47,18 @@ const VignetteTeaser =   styled(Text)`
   line-height: 22px;
 `
 
-const VignetteProjetPerso = ({item}) => {
+// format :  
+// - full : avec affichage du teaser sous le nom du projet au dessus de l'image
+// - short : sans teaser, nom sous l'image
+
+const VignetteProjetPerso = ({item, format}) => {
     return (
         <ItemWrapper to={item.slug}>
           <div>
-            <VignetteNom>{item.nom}</VignetteNom>
-            <VignetteTeaser>{item.teaser}</VignetteTeaser>
+          {format == "full" && <><VignetteNom center>{item.nom}</VignetteNom><VignetteTeaser>{item.teaser}</VignetteTeaser></>}
           </div>
           <VignetteImage image={item.imagePrincipale.gatsbyImageData} alt={item.nom}/>
+          {format == "short" && <VignetteNom>{item.nom}</VignetteNom>}
         </ItemWrapper>
     )
 }

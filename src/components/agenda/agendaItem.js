@@ -49,8 +49,9 @@ const AgendaItemDate =   styled.div`
   display:flex;
   width:250px;
   color:${colors.dark}; 
-  font-size:2.4rem;
+ 
   ${font.title}
+  font-size:2.4rem;
   text-align:center;
  
 `
