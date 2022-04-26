@@ -13,6 +13,7 @@ module.exports = {
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-netlify`,
 
     {
       resolve: `gatsby-plugin-canonical-urls`,

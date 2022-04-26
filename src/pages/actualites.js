@@ -103,7 +103,7 @@ const StyledBtnPrimary = styled(BtnPrimary)`
 
 export const groupesQuery = graphql`
   query  groupesPageQuery($locale: String) {
-    page: datoCmsGroupePage(locale: {eq: $locale}) {
+    page: datoCmsActualitePage(locale: {eq: $locale}) {
       titre
       contenu
       seoMetaTags {
