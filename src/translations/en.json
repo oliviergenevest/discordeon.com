@@ -1,0 +1,35 @@
+{
+  "homepage": "Homepage",
+  "menu__agenda": "agenda",
+  "menu__projets": "projects",
+  "menu__actu": "news",
+  "menu__a-propos": "about",
+  "menu__contact": "contact",
+  "menu__Mentions-legales": "Legal terms & conditions",
+  "menu__credits": "Credits",
+  "btn__toutes les dates":"Toutes les dates",
+  "next": "next",
+  "previous": "previous",
+  "new": "new",
+  "more": "More",
+  "contact-us": "Contact us",
+
+  "name": "Name",
+  "placeholder_name": "Your name",
+  "email": "E-mail",
+  "placeholder_email":"Your e-mail address",
+  "send" : "Send",
+  "formulaire__succes": "Nous vous remercions pour votre message. Nous vous recontacterons dans les plus brefs délais.",
+
+  "email-address":"discordeon@gmail.com",
+  "footer__follow-us" :"Follow us :",
+  "footer__liens" :"Links :",
+  "footer__tel" :"(+0033) 7 68 85 59 50",
+  "footer__reglement-interieur" :" Rules and regulations",
+  "footer__mentions-legales" :"Terms & conditions",
+  "footer__credits" :"Credits",
+  "footer__data-protection" :"Data privacy",
+
+  "cookies__content-banner" : "This website stores cookies on your computer. "
+ 
+}

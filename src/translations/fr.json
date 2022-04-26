@@ -1,0 +1,38 @@
+{
+
+  "horaires-tarifs":"Horaires & tarifs",
+
+  "homepage": "Accueil",
+  "menu__agenda": "agenda",
+  "menu__projets": "projets",
+  "menu__actu": "actu",
+  "menu__a-propos": "à propos",
+  "menu__contact": "contact",
+  "menu__Mentions-legales": "mentions légales",
+  "menu__credits": "crédits",
+
+"btn__toutes les dates":"Toutes les dates",
+ 
+  "next": "suivant",
+  "previous": "précédent",
+  "new": "nouveauté",
+  "more": "En savoir plus",
+  "contact-us": "Contactez-nous",
+ "name": "Nom",
+  "placeholder_name": "Votre nom",
+  "email": "E-mail",
+  "placeholder_email":"Votre adresse e-mail",
+  "send" : "Envoyer",
+  "formulaire__succes": "Nous vous remercions pour votre message. Nous vous recontacterons dans les plus brefs délais.",
+  
+  "email-address":"discordeon@gmail.com",
+  "footer__follow-us" :"Retrouvez-nous sur :",
+  "footer__liens" :"Liens :",
+  "footer__tel" :"07 68 85 59 50",
+  "footer__mentions-legales" :"Mentions légales",
+  "footer__reglement-interieur" :"Réglement intérieur",
+  "footer__credits" :"Crédits",
+  "footer__data-protection" :"Protection des données",
+ 
+  "cookies__content-banner" : "Ce site utilise des cookies."
+}

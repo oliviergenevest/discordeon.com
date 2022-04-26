@@ -1,0 +1,16 @@
+{
+  "en": {
+    "translation": {
+      "siteMetadata": {
+        "title": "Translation Example",
+      },
+    }
+  },  
+  "fr": {
+    "translation": {
+      "siteMetadata": {
+        "title": "Παράδειγμα Μετάφρασης",
+      },
+    }
+  }
+}
