@@ -1,9 +1,10 @@
-/*import "@fontsource/montserrat";
-import "@fontsource/montserrat/500.css";
-import "@fontsource/montserrat/700.css";
-import "@fontsource/wendy-one";
-import "@fontsource/kalam/700.css";
-*/
+import "@fontsource/fredoka";
+import "@fontsource/fredoka/300.css";
+import "@fontsource/fredoka/500.css";
+import "@fontsource/fredoka/600.css";
+import "@fontsource/fredoka/700.css";
+import "@fontsource/open-sans/300-italic.css";
+
 import { createGlobalStyle } from 'styled-components';
 
 const Global = createGlobalStyle`
@@ -40,7 +41,7 @@ a {
 
 /* Pour la page d'accueil : header transparent en mode initial (avant scroll) */
 
-#splash-headroom:not(.headroom--pinned) div:first-of-type  {
+#splash-headroom:not(.headroom--pinned) > div:first-of-type  {
   background:white;
  
   box-shadow: none;

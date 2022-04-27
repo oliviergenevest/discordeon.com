@@ -22,7 +22,7 @@ justify-content: space-between;
 /*gap:3rem;*/
 ${mq.mobile`
 flex-direction:column;
-gap:1rem;
+gap:0;
 `}
 &:after{
   position:absolute;
@@ -35,7 +35,7 @@ gap:1rem;
 }
 `
 const AgendaItemProjet =   styled.div`
-  display:flex;
+  display:block;
   width:200px;
   text-align:right;
   color:${colors.blue};  

@@ -5,8 +5,10 @@
   "version": "1.0.0",
   "author": "Olivier Genevest <contact@oliviergenevest.info>",
   "dependencies": {
+    "@fontsource/fredoka": "^4.5.5",
     "@fontsource/kalam": "^4.5.5",
     "@fontsource/montserrat": "^4.5.7",
+    "@fontsource/open-sans": "^4.5.8",
     "@fontsource/wendy-one": "^4.5.6",
     "@iconify/icons-brandico": "^1.2.2",
     "@iconify/icons-cib": "^1.2.2",
