@@ -20,8 +20,7 @@ import Boop from '../boop';
       text-decoration: none;
       background:  ${colors.blue};
       color:white!important;
-    /*  border:1px solid ${colors.dark};
-      background: transparent;*/
+   
     }
   
 `;
@@ -33,7 +32,7 @@ cursor:pointer;
 background:  ${colors.yellow};
 border: none;
 color:  ${colors.dark};
-font-weight:700;
+font-weight:400;
 padding: .5rem 2.5rem;
 margin: 0;
 transition:all .35s ease;
@@ -42,8 +41,6 @@ text-align: center;
   text-decoration: none;
   background:  ${colors.blue};
   color:white!important;
-/*  border:1px solid ${colors.dark};
-  background: transparent;*/
 }
 
 `;

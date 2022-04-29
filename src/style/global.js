@@ -34,6 +34,10 @@ a {
 	}
 }
 
+strong {
+  font-weight:600;
+}
+
 ::selection {
   background: #E4FAFC; /* WebKit/Blink Browsers */
   color:#161616;

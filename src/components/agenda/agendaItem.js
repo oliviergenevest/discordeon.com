@@ -16,7 +16,7 @@ display:flex;
 position: relative;
 flex-direction:row;
 width:100%;
-margin-bottom:10rem;
+margin-bottom:8rem;
 
 justify-content: space-between;
 /*gap:3rem;*/

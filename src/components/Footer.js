@@ -95,7 +95,7 @@ const FooterBottom = styled.div`
      color:${colors.dark};
   }
   ${font.text};
-  font-size:1.6rem;
+  font-size:1.4rem;
   color:${colors.dark};
   text-align: center;
   ${mq.tabletSmall` text-align:center;`}
@@ -126,7 +126,7 @@ const Footer= ({ location }) => {
           <IconLink to="https://www.facebook.com/discordeon" icon={<Icon title="Facebook" icon={facebookRect} style={{color: colors.dark, fontSize: '28px'}} />} text="Facebook"/>
           <IconLink to="https://www.instagram.com/discordeon" icon={<Icon icon={instagramIcon} style={{color: colors.dark, fontSize: '28px'}} />} text="Instagram"/>
         </FlexIconeWrapper>
-        <Link to="/credits"> <FormattedMessage id="footer__credits"/></Link> - <Link to="/mentions-legales"> <FormattedMessage id="footer__mentions-legales"/></Link> - <Link to="/protection-des-donnees"><FormattedMessage id="footer__data-protection"/></Link> -   <GLink to="/en">EN</GLink> | <GLink to="/">FR</GLink>
+        <Link to="/credits"> <FormattedMessage id="footer__credits"/></Link> - <Link to="/mentions-legales"> <FormattedMessage id="footer__mentions-legales"/></Link> - <Link to="/protection-des-donnees"><FormattedMessage id="footer__data-protection"/></Link>{/* -   <GLink to="/en">EN</GLink> | <GLink to="/">FR</GLink> */}
         <br/><span>© Discordéon - {year} </span>
       </FooterBottom>
     </WrapperFooter>

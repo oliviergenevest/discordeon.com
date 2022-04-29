@@ -17,7 +17,7 @@ const ItemWrapper = styled(Link)`
   margin-bottom:1rem;
   background:white;
   justify-content: center;
-  align-items:center;
+  align-items:${props => (props.format === 'short'  ? 'flex-start' : 'center' )};;
   & div:first-of-type{padding:1rem;}
   
   ${mq.mobile`
@@ -53,7 +53,7 @@ const VignetteTeaser =   styled(Text)`
 
 const VignetteProjetPerso = ({item, format}) => {
     return (
-        <ItemWrapper to={item.slug}>
+        <ItemWrapper to={item.slug} format= {format}>
           <div>
           {format == "full" && <><VignetteNom center>{item.nom}</VignetteNom><VignetteTeaser>{item.teaser}</VignetteTeaser></>}
           </div>

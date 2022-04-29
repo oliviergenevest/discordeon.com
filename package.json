@@ -43,6 +43,7 @@
     "react-accessible-accordion": "^5.0.0",
     "react-calendar": "^3.7.0",
     "react-cookie-consent": "^7.4.1",
+    "react-datocms": "^3.0.12",
     "react-dom": "^18.0.0",
     "react-headroom": "^3.2.0",
     "react-helmet": "^6.1.0",

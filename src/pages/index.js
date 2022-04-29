@@ -164,7 +164,7 @@ const IndexPage = ({ data, pageContext }) => {
             <PageInner>
               <SectionTitle centered  dangerouslySetInnerHTML={{ __html: titreDeLaSectionAgenda }}/>
               <AgendaListWrapper>
-              { _map(nodes, (item, i) => (
+              { _map(nodes.slice(0,6), (item, i) => (
                 (new Date(item.dateEvent) >= new Date()) && 
                   <AgendaItem key={i} item={item}/>
               

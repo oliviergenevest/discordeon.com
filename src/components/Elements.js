@@ -64,10 +64,9 @@ export const Title = styled.h1`
   ${font.title}
    color:${colors.blue};
    margin: 0 auto;
-   margin-top:2.5rem;
-   margin-bottom:1.5rem;
+   margin-top:1rem;
    text-align:${props => props.centered ? 'center' : 'left' };
-    max-width:${props => props.maxWidth ? '600px' : 'none' };
+    max-width:${props => props.maxWidth ? '780px' : 'none' };
 `;
 
 
@@ -87,6 +86,7 @@ export const FocusText = styled.div`
 // a utiliser pour du texte html / markdown provenant de l'api (cms)
 export const Text = styled.div`
   ${font.text}
+  color:${props => props.color ? props.color : 'inherit' };
   h2 {
     ${font.h2} 
   }

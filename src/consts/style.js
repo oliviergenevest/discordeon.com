@@ -79,7 +79,7 @@ export const font = {
   title:  ` 
             font-size:6.4rem;
             line-height:normal;
-            font-weight:500;
+            font-weight:600;
             @media screen and (max-width: ${mQueryPoint.tablet}) {
               font-size: 3.6rem;
             }
