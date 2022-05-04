@@ -15,19 +15,28 @@ import {StructuredText} from "react-datocms";
 import Video from '../components/video';
 import  AgendaItem  from '../components/agenda/agendaItem';
 
+
+
 const PageInnerProject = styled.div`
   max-width: 780px; 
   position:relative;
- 
-}
+`;
+
+
+const EncartBtnWrapper  = styled.div`
+  position: relative;
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
 `;
 
 const AgendaListWrapper =   styled.div`
-display:flex;
-flex-direction:column;
-width:100%; 
-/*gap:5rem;*/
-margin-top:3rem;
+  display:flex;
+  flex-direction:column;
+  width:100%; 
+  /*gap:5rem;*/
+  margin-top:3rem;
 `
 const StyledGrid2Col = styled(Flex)`
  gap:2rem;
@@ -91,6 +100,7 @@ const Projet = ({ data, pageContext, location }) => {
         {(contacts.length > 0) && 
           <GridItem>
             <Text><h2>Contact</h2></Text>
+            <EncartBtnWrapper>
             {contacts.map(block => (
               <React.Fragment key={block.id}>
                 {block.model.apiKey === "bouton" && (    
@@ -99,6 +109,7 @@ const Projet = ({ data, pageContext, location }) => {
                 }
               </React.Fragment>
             ))}
+            </EncartBtnWrapper>
           </GridItem>
         }
 
@@ -114,6 +125,7 @@ const Projet = ({ data, pageContext, location }) => {
         }
         </StyledGrid2Col>
         <Spacer/>
+        {/* Trier le tableau des dates de manière à n'avoir que le tableau des dates à venir et non passées */}
         {(data.dates.nodes.length > 0) &&  
           <>
             <Text><h2>En tournée</h2></Text>      
