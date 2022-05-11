@@ -74,7 +74,7 @@ const Projet = ({ data, pageContext, location }) => {
           {(description2.blocks.length > 0) && <StructuredText
             data={description2}
             renderBlock={({record}) => {
-              if (record.__typename === "DatoCmsPlayerZikd") {
+              if (record.__typename === "DatoCmsPlayerZik") {
                 return <PlayerZik soundcloud urlPlayer={record.urlPlayer}/>
               
              }
