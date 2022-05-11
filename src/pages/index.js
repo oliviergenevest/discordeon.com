@@ -22,6 +22,7 @@ import {
 import  BtnPrimary  from '../components/buttons/ButtonRounded';
 import Seo from '../components/Seo';
 import Video from '../components/video';
+import PlayerZik from '../components/players/PlayerZik';
 import Splash from '../components/Splash';
 import  AgendaItem  from '../components/agenda/agendaItem';
 export const indexQuery = graphql`
@@ -47,6 +48,15 @@ export const indexQuery = graphql`
             providerUid
             provider
           }
+        }
+      }
+      playerZik {
+        ... on DatoCmsPlayerZik {
+          model {
+            apiKey
+          }
+          id
+          urlPlayer
         }
       }
       titreDeLaSectionAgenda
@@ -120,6 +130,7 @@ const IndexPage = ({ data, pageContext }) => {
     titreDeLaSectionAgenda,
     titreDeLaSectionRegarderEcouter,
     videos,
+    playerZik,
     seoMetaTags
   } = data.datoCmsAccueilPage;
   const { nodes } = data.agenda; // toutes les dates
@@ -153,6 +164,18 @@ const IndexPage = ({ data, pageContext }) => {
                 />
                 
              
+                  )
+                )}
+
+                { _map(playerZik, (player, i) => ( 
+                  <div  key={i}>
+                    <Spacer/>
+                    <PlayerZik
+                    urlPlayer={player.urlPlayer}
+                    soundcloud
+                    />
+                  </div>
+            
                   )
                 )}
            

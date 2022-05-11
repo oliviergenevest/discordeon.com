@@ -13,6 +13,7 @@ import Boop from '../components/boop';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import {StructuredText} from "react-datocms";
 import Video from '../components/video';
+import PlayerZik from '../components/players/PlayerZik';
 import  AgendaItem  from '../components/agenda/agendaItem';
 
 
@@ -73,6 +74,10 @@ const Projet = ({ data, pageContext, location }) => {
           {(description2.blocks.length > 0) && <StructuredText
             data={description2}
             renderBlock={({record}) => {
+              if (record.__typename === "DatoCmsPlayerZikd") {
+                return <PlayerZik soundcloud urlPlayer={record.urlPlayer}/>
+              
+             }
               if (record.__typename === "DatoCmsImage") {
                  return <GatsbyImage image={record.image.gatsbyImageData} alt=""/>
               }
@@ -212,6 +217,10 @@ export const projectQuery = graphql`
           ...on DatoCmsTexte {
             id: originalId
             texte
+          }
+          ...on DatoCmsPlayerZik {
+            id: originalId
+            urlPlayer
           }
           ...on DatoCmsVideo {
             id: originalId

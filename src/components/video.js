@@ -2,7 +2,7 @@ import React from "react";
 
 
 const Video = ({ videoSrcURL, videoTitle, ...props }) => (
-  <div className="video-responsive">
+  <><div className="video-responsive">
     <iframe
       src={videoSrcURL}
       title={videoTitle}
@@ -13,6 +13,9 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
       allowFullScreen
        width="450"
     />
+    
   </div>
+  <span>{videoTitle}</span>
+  </>
 )
 export default Video
