@@ -94,7 +94,7 @@ const Projet = ({ data, pageContext, location }) => {
               return (
                 <>
                   <p>bloc inconnu</p>
-                  <pre>{JSON.stringify(record, null, 2)}</pre>
+                  <pre>{/*JSON.stringify(record, null, 2)*/}</pre>
                 </>
               )
 
@@ -110,6 +110,10 @@ const Projet = ({ data, pageContext, location }) => {
               <React.Fragment key={block.id}>
                 {block.model.apiKey === "bouton" && (    
                   <BtnPrimary as="a" href={block.lienDuBouton} external>{block.texteDuBouton}</BtnPrimary>   
+                  )
+                }
+                  {block.model.apiKey === "lien_contact" && (    
+                  <BtnPrimary as="a" href={block.lien} external>{block.nom}</BtnPrimary>   
                   )
                 }
               </React.Fragment>
@@ -214,6 +218,12 @@ export const projectQuery = graphql`
               gatsbyImageData
             }
           }
+          ... on DatoCmsGallerieImage {
+            id: originalId
+            images {
+              gatsbyImageData
+            }
+          }
           ...on DatoCmsTexte {
             id: originalId
             texte
@@ -254,6 +264,14 @@ export const projectQuery = graphql`
           lienDuBouton
           lienExterne
           texteDuBouton
+        }
+        ... on DatoCmsLiensContact {
+          id
+          lien
+          nom
+          model {
+            apiKey
+          }
         }
       }
 
