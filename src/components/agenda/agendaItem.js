@@ -4,6 +4,7 @@ import { format } from 'date-fns';
 import styled from 'styled-components';
 import { GatsbyImage } from "gatsby-plugin-image"
 import { mq, colors, font } from '../../consts/style'; 
+import Link from '../ExtendedLink';
 import {
   
     Text,
@@ -34,10 +35,10 @@ gap:0;
   background-color:${colors.blueLight};
 }
 `
-const AgendaItemProjet =   styled.div`
+const AgendaItemProjet =   styled(Link)`
   display:block;
-  width:200px;
-  text-align:right;
+  /*width:200px;*/
+
   color:${colors.blue};  
   ${mq.mobile`
   width:100%;
@@ -50,8 +51,8 @@ const AgendaItemDate =   styled.div`
   width:250px;
   color:${colors.dark}; 
  
-  ${font.title}
-  font-size:2.4rem;
+  
+  /*font-size:2.4rem;*/
   text-align:center;
  
 `
@@ -79,11 +80,12 @@ const AgendaItem = ({item}) => {
     return (
         <ItemWrapper>
             <AgendaItemDate>{format(new Date(item.dateEvent), 'dd LLL yyyy', {locale: fr})}</AgendaItemDate>
+            <AgendaItemProjet to={'/projets/'+item.projet.slug}>{item.projet.nom}</AgendaItemProjet>
             <AgendaItemContent>
-                {item.titre} 
+                {/*item.titre*/} 
                 <Text dangerouslySetInnerHTML={{ __html: item.details }}/>
             </AgendaItemContent>
-            <AgendaItemProjet>{item.projet.nom}</AgendaItemProjet>
+           
 
         </ItemWrapper>
     )

@@ -56,6 +56,7 @@ export const agendaQuery = graphql`
         dateEvent
         projet {
           nom
+          slug
         }
       }
     }

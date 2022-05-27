@@ -1,10 +1,13 @@
 import React from "react";
 
 
-const Video = ({ videoSrcURL, videoTitle, ...props }) => (
+const Video = ({ videoSrcURL, videoTitle, ...props }) => {
+console.log(videoSrcURL)
+const embedSrc = videoSrcURL.includes('playlist?list') ? videoSrcURL.replace('playlist?list=', '/embed/videoseries?list=') : videoSrcURL.replace('watch?v=', 'embed/')
+  return (
   <><div className="video-responsive">
     <iframe
-      src={videoSrcURL}
+      src={embedSrc}
       title={videoTitle}
       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
       frameBorder="0"
@@ -17,5 +20,6 @@ const Video = ({ videoSrcURL, videoTitle, ...props }) => (
   </div>
   <span>{videoTitle}</span>
   </>
-)
+  )
+  }
 export default Video

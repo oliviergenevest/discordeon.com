@@ -42,6 +42,7 @@ export const indexQuery = graphql`
             apiKey
           }
           id
+          titre
           video {
             url
             title
@@ -159,8 +160,8 @@ const IndexPage = ({ data, pageContext }) => {
              { _map(videos, (video, i) => ( 
         
                 <Video key={i}
-                videoSrcURL={video.video.url.replace('watch?v=', 'embed/')}
-                videoTitle={video.video.title}
+                videoSrcURL={video.video.url} 
+                videoTitle={video.titre}
                 />
                 
              
@@ -172,7 +173,7 @@ const IndexPage = ({ data, pageContext }) => {
                     <Spacer/>
                     <PlayerZik
                     urlPlayer={player.urlPlayer}
-                    soundcloud
+                    type = "soundcloud"
                     />
                   </div>
             
