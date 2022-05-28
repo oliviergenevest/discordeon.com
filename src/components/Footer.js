@@ -104,10 +104,8 @@ const FooterBottom = styled.div`
 
 const IconLink = ({to, icon, text}) => {
   return(
-
     <LinkSocial title={text} href={to} target="_blank"  rel="nofollow noopener noreferrer">
       {icon}
-      
     </LinkSocial>
   )
 }

@@ -13,31 +13,30 @@ import {
    
   } from "../Elements"
 const ItemWrapper = styled.div`
-display:flex;
-position: relative;
-flex-direction:row;
-width:100%;
-margin-bottom:8rem;
-
-justify-content: space-between;
-/*gap:3rem;*/
-${mq.mobile`
-flex-direction:column;
-gap:0;
-`}
+  display:flex;
+  position: relative;
+  flex-direction:row;
+  width:100%;
+  margin-bottom:6rem;
+  justify-content: space-between;
+  gap:1rem;
+  ${mq.mobile`
+    flex-direction:column;
+    gap:0;
+  `}
 &:after{
   position:absolute;
   content:"";
-  bottom:-5rem;
+  bottom:-2rem;
 
   width:100%;
   height:1px;
-  background-color:${colors.blueLight};
+  background-color:${colors.yellow};
 }
 `
 const AgendaItemProjet =   styled(Link)`
   display:block;
-  /*width:200px;*/
+  width:200px;
 
   color:${colors.blue};  
   ${mq.mobile`
@@ -47,13 +46,19 @@ const AgendaItemProjet =   styled(Link)`
 `
 
 const AgendaItemDate =   styled.div`
-  display:flex;
-  width:250px;
+  display:block;
+  width:180px;
   color:${colors.dark}; 
- 
+  font-weight:700;
   
-  /*font-size:2.4rem;*/
-  text-align:center;
+  font-size:2.4rem;
+  text-transform:uppercase;
+  & span  {
+    font-weight:400;
+    font-size:2rem;
+    margin-top:-.5rem;
+    display:block;
+  }
  
 `
 
@@ -79,10 +84,10 @@ const AgendaItem = ({item}) => {
 
     return (
         <ItemWrapper>
-            <AgendaItemDate>{format(new Date(item.dateEvent), 'dd LLL yyyy', {locale: fr})}</AgendaItemDate>
+            <AgendaItemDate>{format(new Date(item.dateEvent), 'dd LLL', {locale: fr}) } <span>{format(new Date(item.dateEvent), 'yyyy', {locale: fr}) }</span></AgendaItemDate>
             <AgendaItemProjet to={'/projets/'+item.projet.slug}>{item.projet.nom}</AgendaItemProjet>
             <AgendaItemContent>
-                {/*item.titre*/} 
+                <Text dangerouslySetInnerHTML={{ __html: item.titre }}/>
                 <Text dangerouslySetInnerHTML={{ __html: item.details }}/>
             </AgendaItemContent>
            

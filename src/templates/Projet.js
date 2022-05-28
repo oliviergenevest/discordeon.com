@@ -9,14 +9,33 @@ import { Banner, PageWrapper, PageInner, Grid2Col,PageTitle, Title,Spacer,Flex, 
 import { colors, mq } from '../consts/style';
 import { projetTypes } from '../types/propTypes';
 import Seo from '../components/Seo';
-import Boop from '../components/boop';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import {StructuredText} from "react-datocms";
 import Video from '../components/video';
 import PlayerZik from '../components/players/PlayerZik';
 import  AgendaItem  from '../components/agenda/agendaItem';
+import { Download } from '@styled-icons/bootstrap';
+import { Icon } from '@iconify/react';
+import facebookRect from '@iconify/icons-brandico/facebook-rect';
 
 
+/* ICONES LIEN SITES EXTERNES RUBRIQUE CONTACT */
+const IconLink = ({to, icon, text}) => {
+  return(
+    <LinkSocial title={text} href={to} target="_blank"  rel="nofollow noopener noreferrer">
+      {icon}
+    </LinkSocial>
+  )
+}
+
+const LinkSocial = styled.a`
+  display:flex;
+  flex-direction:column;
+  gap:1rem;
+  align-items:center;
+  justify-content:center;
+  padding:.5rem;
+`
 
 const PageInnerProject = styled.div`
   max-width: 780px; 
@@ -53,6 +72,11 @@ padding:2rem;
 `;
 
 
+const Block = styled.div`
+  margin:2rem 0;
+`;
+
+
 const Projet = ({ data, pageContext, location }) => {
 
   const {  nom, teaser, description2,  imagePrincipale, contacts, downloadFiles,seoMetaTags} = data.projet;
@@ -62,9 +86,11 @@ const Projet = ({ data, pageContext, location }) => {
       <Seo meta={seoMetaTags} />
       
       <PageWrapper>
+        <PageInner> <PageTitle>Projets</PageTitle></PageInner>
+       
         <PageInnerProject>
        
-          <PageTitle>Projets</PageTitle>
+         
           <Title maxWidth centered>{nom}</Title>
           <FocusText centered dangerouslySetInnerHTML={{ __html:teaser }} />
           
@@ -75,17 +101,22 @@ const Projet = ({ data, pageContext, location }) => {
             data={description2}
             renderBlock={({record}) => {
               if (record.__typename === "DatoCmsPlayerZik") {
-                return <PlayerZik soundcloud urlPlayer={record.urlPlayer}/>
-              
+                return <Block>
+                        <PlayerZik type={record.typeDeLecteur} urlPlayer={record.urlPlayer}/>
+                        </Block>           
              }
               if (record.__typename === "DatoCmsImage") {
-                 return <GatsbyImage image={record.image.gatsbyImageData} alt=""/>
+                 return  <Block>
+                          <GatsbyImage image={record.image.gatsbyImageData} alt={record.image.title}/>
+                        </Block>
               }
               if (record.__typename === "DatoCmsVideo") {
-                return  <Video
-                videoSrcURL={record.video.url.replace('watch?v=', 'embed/')}
-                videoTitle={record.video.title}
-                />
+                return  <Block>
+                          <Video
+                            videoSrcURL={record.video.url}
+                            videoTitle={record.video.title}
+                          />
+                        </Block>
              }
              if (record.__typename === "DatoCmsTexte") {
               return  <Text dangerouslySetInnerHTML={{ __html:record.texte }}/>
@@ -104,17 +135,25 @@ const Projet = ({ data, pageContext, location }) => {
         <StyledGrid2Col>
         {(contacts.length > 0) && 
           <GridItem>
-            <Text><h2>Contact</h2></Text>
+            <Text><h3>Pour en savoir +</h3></Text>
             <EncartBtnWrapper>
             {contacts.map(block => (
               <React.Fragment key={block.id}>
-                {block.model.apiKey === "bouton" && (    
-                  <BtnPrimary as="a" href={block.lienDuBouton} external>{block.texteDuBouton}</BtnPrimary>   
+                {block.model.apiKey === "page_internet" && (    
+                           <IconLink to={block.url} icon={<Icon title="Site internet" icon="iconoir:www" style={{color: colors.dark, fontSize: '28px'}} />} text={block.url}/>
+                           )
+                }
+                {block.model.apiKey === "page_facebook" && (    
+                           <IconLink to={block.url} icon={<Icon title="Facebook" icon="akar-icons:facebook-fill" style={{color: colors.dark, fontSize: '28px'}} />} text={block.url}/>
                   )
                 }
-                  {block.model.apiKey === "lien_contact" && (    
-                  <BtnPrimary as="a" href={block.lien} external>{block.nom}</BtnPrimary>   
-                  )
+                {block.model.apiKey === "page_bandcamp" && (    
+                           <IconLink to={block.url} icon={<Icon title="Bandcamp" icon="fa:bandcamp" style={{color: colors.dark, fontSize: '28px'}} />} text="Bandcamp"/>
+                           )
+                }
+                {block.model.apiKey === "page_soundcloud" && (    
+                           <IconLink to={block.url} icon={<Icon title="Soundcloud" icon="entypo-social:soundcloud" style={{color: colors.dark, fontSize: '28px'}} />} text="Soundcloud"/>
+                           )
                 }
               </React.Fragment>
             ))}
@@ -124,8 +163,8 @@ const Projet = ({ data, pageContext, location }) => {
 
         {(downloadFiles.length > 0) && 
           <GridItem>
-            <Text><h2>Téléchargements</h2></Text>
-            {downloadFiles.map(file => (
+            <Text><h3>Pour les pros</h3></Text>
+            {downloadFiles.map(file => (  
               <React.Fragment key={file.filename}>
                   <BtnPrimary as="a" href={file.url} external>{file.filename}</BtnPrimary>   
               </React.Fragment>
@@ -215,12 +254,14 @@ export const projectQuery = graphql`
           ...on DatoCmsImage {
             id: originalId
             image {
+              title
               gatsbyImageData
             }
           }
           ... on DatoCmsGallerieImage {
             id: originalId
             images {
+              title
               gatsbyImageData
             }
           }
@@ -231,6 +272,7 @@ export const projectQuery = graphql`
           ...on DatoCmsPlayerZik {
             id: originalId
             urlPlayer
+            typeDeLecteur
           }
           ...on DatoCmsVideo {
             id: originalId
@@ -256,19 +298,31 @@ export const projectQuery = graphql`
       } 
 
       contacts {
-        ... on DatoCmsBouton {
+       
+        ... on DatoCmsPageInternet {
+          id
+          url
           model {
             apiKey
           }
-          id
-          lienDuBouton
-          lienExterne
-          texteDuBouton
         }
-        ... on DatoCmsLiensContact {
+        ... on DatoCmsPageFacebook {
           id
-          lien
-          nom
+          url
+          model {
+            apiKey
+          }
+        }
+        ... on DatoCmsPageBandcamp {
+          id
+          url
+          model {
+            apiKey
+          }
+        }
+        ... on DatoCmsPageSoundcloud {
+          id
+          url
           model {
             apiKey
           }

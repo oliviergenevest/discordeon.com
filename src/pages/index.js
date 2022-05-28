@@ -58,6 +58,7 @@ export const indexQuery = graphql`
           }
           id
           urlPlayer
+          typeDeLecteur
         }
       }
       titreDeLaSectionAgenda
@@ -173,7 +174,7 @@ const IndexPage = ({ data, pageContext }) => {
                     <Spacer/>
                     <PlayerZik
                     urlPlayer={player.urlPlayer}
-                    type = "soundcloud"
+                    type = {player.typeDeLecteur}
                     />
                   </div>
             
