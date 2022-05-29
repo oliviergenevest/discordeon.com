@@ -63,6 +63,7 @@ const NewsItemImage =   styled(GatsbyImage)`
   ${mq.tabletSmall`
    height:100%;
    width:100%;
+   min-width:auto;
   `}
 `
 
