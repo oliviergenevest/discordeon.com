@@ -58,6 +58,9 @@ const AgendaItemDate =   styled.div`
     font-size:2rem;
     margin-top:-.5rem;
     display:block;
+    ${mq.mobile`
+      display:inline;
+  `}
   }
  
 `

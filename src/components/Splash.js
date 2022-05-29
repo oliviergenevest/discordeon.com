@@ -4,6 +4,7 @@ import Link from './ExtendedLink';
 import { colors, space, font } from '../consts/style';
 import { FormattedMessage} from 'react-intl';
 import Img from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import ModalWindow from './modal/modal-window'
 import { useModalWithData } from '../hooks/modal-hook'
 import {  Text, ArrowLeftLink, ArrowRightLink, ArrowLeftIcon, ArrowRightIcon  } from './Elements';
@@ -33,7 +34,7 @@ const InnerWrapper = styled.div`
   gap:6rem;
 `;
 
-const Logo = styled(Img)`
+const Logo = styled(GatsbyImage)`
   width:100%;
 `;
 
@@ -57,7 +58,7 @@ const Splash = ({teaser, logo, background}) => {
 
     <WrapperSplash >  
       <InnerWrapper>
-        <Logo fluid={logo.fluid} alt="Discordéon"/>
+        <Logo image={logo.gatsbyImageData} alt="Discordéon"/>
         <Teaser>{teaser}</Teaser>
       </InnerWrapper>
     </WrapperSplash>

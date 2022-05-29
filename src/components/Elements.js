@@ -182,6 +182,9 @@ export const Legende = styled.span`
   font-size:1.4rem;
   font-style: italic;
   line-height:2rem;
+  display: block;
+  text-align:right;
+  margin-bottom: 1rem;
 `
 export const Flex = styled.div`
   display:flex;

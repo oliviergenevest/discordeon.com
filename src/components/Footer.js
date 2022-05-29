@@ -92,7 +92,7 @@ const FooterBottom = styled.div`
   padding: 0 2rem;
   margin-top:4.4rem;
   a {
-     color:${colors.dark};
+     color:${colors.blue};
   }
   ${font.text};
   font-size:1.4rem;

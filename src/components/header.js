@@ -140,13 +140,18 @@ const LinkHeader = styled(props => <Link {...props} />)`
 `;
 
 const LogoLink = styled(LinkHeader)`
-  img {
-     height:8rem;
+  svg {
+     height:7rem;
   }
   height:100%;
- 
+  ${mq.tabletSmall`
+  svg { 
+    height:6rem;
+    width: auto!important;
+  }
+`}
    ${mq.mobile`
-      img { 
+      svg { 
         height:5rem;
         width: auto!important;
       }

@@ -90,6 +90,10 @@ export const font = {
           font-size: 2.6rem;
           line-height: 31px;
           color: ${colors.blue};
+          @media screen and (max-width: ${mQueryPoint.tablet}) {
+            font-size: 2rem;
+            line-height: 24px;
+          }
           `,
 // avec trait orange oblique devant
   h2Oblique: `

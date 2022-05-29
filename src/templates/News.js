@@ -1,7 +1,6 @@
 import React, { Fragment, useRef } from "react"
 import { graphql } from "gatsby"
 import { Icon } from '@iconify/react';
-import Img from "gatsby-image"
 import styled from "styled-components"
 import _map from "lodash/map"
 import { GatsbyImage } from 'gatsby-plugin-image';
@@ -14,7 +13,7 @@ import {
   Title,
   PageTitle,
   Spacer,
-  Text2Col,
+  Legende,
   ArrowLeftLink,
   ArrowRightLink,
   ArrowLeftIcon,
@@ -74,6 +73,7 @@ const News = ({ data, pageContext, location }) => {
     image,
     teaser,
     contenu,
+    colonneGauche,
     meta,
     seoMetaTags
   } = data.news
@@ -90,6 +90,7 @@ const News = ({ data, pageContext, location }) => {
           <Spacer /> 
           <div style={{textAlign:"center"}}>
             <GatsbyImage image={image.gatsbyImageData} alt={titre} />
+            <Legende>{image.title}</Legende>
           </div>
         </PageInner>
         <PageInner>
@@ -100,10 +101,8 @@ const News = ({ data, pageContext, location }) => {
                     <Icon title="Date" icon="ant-design:calendar-twotone" style={{color: colors.dark, fontSize: '20px'}} />
                     <FormatDate date={meta.createdAt}/>
                   </NewsItemDate>
-               
-                  <Text dangerouslySetInnerHTML={{ __html:teaser }}/>
+                  <Text dangerouslySetInnerHTML={{ __html:colonneGauche }}/>
           </LeftContainer>
-          
           <Text dangerouslySetInnerHTML={{ __html:contenu}}/>
         </PageInnerNews>
         </PageInner>
@@ -120,6 +119,7 @@ export const newsQuery = graphql`
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
+      colonneGauche
       teaser
       contenu
       meta {
@@ -127,12 +127,11 @@ export const newsQuery = graphql`
       }
       id
       image{
+        title
         gatsbyImageData(
-          
           placeholder: BLURRED,
           forceBlurhash: false,
-         width:1200
-         
+          width:1200
         )
       }
   

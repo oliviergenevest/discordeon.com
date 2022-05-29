@@ -2,10 +2,12 @@ import React, { Fragment} from 'react';
 import { graphql } from 'gatsby';
 import Link from '../components/ExtendedLink';
 import _map from 'lodash/map';
+import { Icon } from '@iconify/react';
 import { FormattedMessage} from 'react-intl';
 import styled from 'styled-components';
-import { colors,  space } from '../consts/style';
+import { colors,  mq, font } from '../consts/style';
 import { GatsbyImage } from 'gatsby-plugin-image';
+import FormatDate  from '../components/formatDate'
 import {
   PageWrapper,
   PageInner,
@@ -13,6 +15,7 @@ import {
   Flex,
   FocusText,
   Text,
+  PageTitle,
   SectionTitle,
   Legende,
   BgWrap,
@@ -25,15 +28,17 @@ import Video from '../components/video';
 import PlayerZik from '../components/players/PlayerZik';
 import Splash from '../components/Splash';
 import  AgendaItem  from '../components/agenda/agendaItem';
+
 export const indexQuery = graphql`
  query datoCmsAccueil($locale: String) {
     datoCmsAccueilPage(locale: {eq: $locale}){
       teaser
       logo {
         title
-        fluid(maxHeight: 438, imgixParams: { fm: "png", auto: "compress" }) {
-            ...GatsbyDatoCmsFluid
-        }
+        gatsbyImageData (
+          height:195
+        )
+        
       }
       titreDeLaSectionRegarderEcouter
       videos {
@@ -67,17 +72,22 @@ export const indexQuery = graphql`
       }
     }
     
-    news: allDatoCmsActualite(filter: {locale: {eq: $locale}}, limit: 1, sort: {fields: meta___updatedAt, order:DESC}) {
+    news: allDatoCmsActualite(filter: {locale: {eq: $locale}}, limit: 1, sort: {fields: meta___createdAt, order:DESC}) {
       nodes {
         id
         slug
         titre
         contenu
         teaser
+        meta {
+          createdAt
+        }
         image {  
+          title
           gatsbyImageData(
             placeholder: BLURRED,
-            forceBlurhash: false,           
+            forceBlurhash: false,   
+            width:710,
           )
         }
       }
@@ -109,19 +119,45 @@ width:100%;
 margin-top:8rem;
 `
 
-const SectionNews = styled.div`
-width:100%;
-position:relative;
-margin-top:1rem;
-margin-bottom:5rem;
-text-align:center;
-`
 
 const News = styled.div`
   margin:0 auto;
   max-width:705px;
+  margin-top:2rem;
+  h2 {
+    a { ${font.h2}}
+    ${font.h2}
+    transition: all .15s ease-in-out;
+    text-transform:none;
+  }
+  
 `
 
+const NewsItemImage =   styled(GatsbyImage)`  
+  min-width:340px;
+  border-radius:4px;
+  margin-bottom:0;
+  margin-top:1rem;
+  ${mq.tabletSmall`
+   height:100%;
+   width:100%;
+  `}
+
+`
+
+const NewsItemDate =   styled.div`
+  display:flex;
+  width:100%;
+  align-items:center;
+  justify-content:flex-start;
+  gap:.8rem;
+  color:${colors.dark};
+  font-size:1.4rem;
+  svg path:first-of-type {
+   fill: ${colors.yellow};
+  }
+ 
+`
 
 const IndexPage = ({ data, pageContext }) => {
 
@@ -142,47 +178,75 @@ const IndexPage = ({ data, pageContext }) => {
       <Splash teaser={teaser}  logo={logo} />
       <PageWrapper>
         <PageInner>
+        <Grid2Col>
                 { _map(data.news.nodes, (lastnews, i) => ( 
                 <News key={i}>
-                  <SectionTitle centered  dangerouslySetInnerHTML={{ __html: lastnews.titre }} />
-                    <Text dangerouslySetInnerHTML={{ __html: lastnews.teaser}}/>
-                    <BtnPrimary to={`/actualites/${lastnews.slug}/`}><FormattedMessage id="more"/></BtnPrimary>
+                  <NewsItemDate>
+                    <Icon title="Date" icon="ant-design:calendar-twotone" style={{color: colors.dark, fontSize: '20px'}} />
+                    <FormatDate date={lastnews.meta.createdAt}/>
+                  </NewsItemDate>
+                  <h2><Link to='./actualites' title={lastnews.titre}>{lastnews.titre}</Link></h2>
+                  <NewsItemImage image={lastnews.image.gatsbyImageData} alt={lastnews.titre}/>
+                  <Legende>{lastnews.image.title}</Legende>
+                  <Text dangerouslySetInnerHTML={{ __html: lastnews.teaser}}/>
+                  <BtnPrimary to={`/actualites/${lastnews.slug}/`}><FormattedMessage id="lire la suite"/></BtnPrimary>
                   </News>
                   )
                 )}
+          
+              <div> <BgWrap color={colors.blueLight}>
+                  <PageTitle centered  dangerouslySetInnerHTML={{ __html: titreDeLaSectionAgenda }}/>
+                  <AgendaListWrapper>
+                  { _map(nodes.slice(0,6), (item, i) => (
+                    (new Date(item.dateEvent) >= new Date()) && 
+                      <AgendaItem key={i} item={item}/>
+                  
+                  ))}
+                  </AgendaListWrapper> 
+                  <BtnPrimary to={`/agenda`}><FormattedMessage id="btn__toutes les dates"/></BtnPrimary>
+                  </BgWrap>
+              </div>
+           
+          </Grid2Col>
           </PageInner>
-
+          <PageInner>
+          </PageInner>
+       
           <Spacer/>
           <Spacer/>
 
           <PageInner>
           
               <SectionTitle centered   dangerouslySetInnerHTML={{ __html: titreDeLaSectionRegarderEcouter }}/>
-             { _map(videos, (video, i) => ( 
-        
-                <Video key={i}
-                videoSrcURL={video.video.url} 
-                videoTitle={video.titre}
-                />
-                
-             
-                  )
-                )}
+              <center><BtnPrimary to='/projets'><FormattedMessage id="Projets et collaborations"/></BtnPrimary></center>
 
-                { _map(playerZik, (player, i) => ( 
-                  <div  key={i}>
-                    <Spacer/>
-                    <PlayerZik
-                    urlPlayer={player.urlPlayer}
-                    type = {player.typeDeLecteur}
-                    />
+              <Spacer/>
+                <Grid2Col>
+                  <div>
+                    { _map(videos, (video, i) => ( 
+                        <Video key={i}
+                        videoSrcURL={video.video.url} 
+                        videoTitle={video.titre}
+                        />
+                        )
+                      )
+                    }
                   </div>
-            
-                  )
-                )}
-           
+                  <div>
+                    { _map(playerZik, (player, i) => ( 
+                        <div  key={i}>
+                          <PlayerZik
+                          urlPlayer={player.urlPlayer}
+                          type = {player.typeDeLecteur}
+                          />
+                        </div>
+                        )
+                      )
+                    }
+                  </div>
+                </Grid2Col> 
+
           </PageInner>
-        
           <Spacer/>
           <BgWrap color={colors.blueLight}>
           <Spacer/>

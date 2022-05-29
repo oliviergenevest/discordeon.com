@@ -1,7 +1,6 @@
 import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 import { colors } from "../consts/style"
-import Img from "gatsby-image"
 import Seo from "../components/Seo"
 import ContactForm from "../components/ContactForm/ContactForm"
 import BtnPrimary from "../components/buttons/ButtonRounded"

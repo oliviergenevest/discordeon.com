@@ -1,7 +1,5 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
-
-import Img from 'gatsby-image';
 import Seo from '../components/Seo';
 import {
   PageWrapper,

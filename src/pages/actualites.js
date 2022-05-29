@@ -1,7 +1,7 @@
 import React, { Fragment} from 'react';
 import { graphql } from 'gatsby';
+import Link from '../components/ExtendedLink';
 import _map from 'lodash/map';
-import Img from 'gatsby-image';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Seo from '../components/Seo';
 import  BtnPrimary  from '../components/buttons/ButtonRounded';
@@ -10,6 +10,7 @@ import { mq, colors, font } from '../consts/style';
 import { Icon } from '@iconify/react';
 import { FormattedMessage} from 'react-intl';
 import FormatDate  from '../components/formatDate'
+
 
 import {
   PageWrapper,
@@ -26,44 +27,42 @@ const NewsListWrapper =   styled.div`
 display:flex;
 flex-direction:column;
 width:100%; 
-/*gap:5rem;*/
 margin-top:8rem;
 `
 
-const NewsItem =   styled.div`
-display:flex;
-position: relative;
-flex-direction:row;
-width:100%;
-margin-bottom:10rem;
-/*gap:3rem;*/
-${mq.mobile`
-flex-direction:column;
-gap:1rem;
-`}
-&:after{
-  position:absolute;
-  content:"";
-  bottom:-5rem;
+const NewsItem =  styled(Link)`
+  display:flex;
+  position: relative;
+  flex-direction:row;
+  align-items:flex-start;
   width:100%;
-  height:1px;
-  background-color:${colors.blueLight};
-}
+  margin-bottom:6rem;
+  gap:3rem;
+  ${mq.tabletSmall`
+    flex-direction:column;
+    gap:1rem;
+  `}
+  &:after{
+    position:absolute;
+    content:"";
+    bottom:-3rem;
+    width:100%;
+    height:1px;
+    background-color:${colors.yellow};
+  }
+  &:hover h2
+  {
+   font-weight:600;
+    transition: all .15s ease-in-out;
+  }
 `
 
-const NewsItemImage =   styled(GatsbyImage)`
-  display:flex;
-  margin-right:1.5rem;
-  ${mq.mobile`
-  margin-left:0;
-  `}
-  flex-direction:row;
-
-  width:360px;
-  height:auto;
+const NewsItemImage =   styled(GatsbyImage)`  
+  min-width:340px;
   border-radius:4px;
-  ${mq.mobile`
-  height:auto;
+  ${mq.tabletSmall`
+   height:100%;
+   width:100%;
   `}
 `
 
@@ -91,6 +90,7 @@ const NewsItemContent =   styled.div`
   width:100%;
   h2 {
     ${font.h2}
+    transition: all .15s ease-in-out;
     text-transform:none;
   }
  
@@ -98,7 +98,9 @@ const NewsItemContent =   styled.div`
 
 const StyledBtnPrimary = styled(BtnPrimary)`
   margin-top:1.2rem;
+  display:none;
 `
+
 
 
 export const groupesQuery = graphql`
@@ -111,7 +113,7 @@ export const groupesQuery = graphql`
       }
     }
 
-    news: allDatoCmsActualite(filter: {locale: {eq: $locale}}, sort: {fields: meta___updatedAt, order:DESC}){
+    news: allDatoCmsActualite(filter: {locale: {eq: $locale}}, sort: {fields: meta___createdAt, order:DESC}){
       nodes {
         id
         meta {
@@ -125,7 +127,7 @@ export const groupesQuery = graphql`
           gatsbyImageData(
             placeholder: BLURRED,
             forceBlurhash: false,   
-            width:360,
+            width:710,
           
           )
         }
@@ -150,7 +152,7 @@ const NewsPage = ({ data }) => {
           <FocusText dangerouslySetInnerHTML={{ __html: contenu }}/>
           <NewsListWrapper>
             { _map(nodes, (item, i) => (
-              <NewsItem key={item.id}>
+              <NewsItem key={item.id} to={`/actualites/${item.slug}/`} title={titre}>
                 <NewsItemImage image={item.image.gatsbyImageData} alt={titre}/>
 
                 <NewsItemContent>
@@ -162,6 +164,8 @@ const NewsPage = ({ data }) => {
                   <Text dangerouslySetInnerHTML={{ __html: item.teaser }}/>
                   <StyledBtnPrimary to={`/actualites/${item.slug}/`}><FormattedMessage id="more"/></StyledBtnPrimary>
                 </NewsItemContent>
+     
+
               </NewsItem>
             ))}
            
