@@ -83,7 +83,7 @@ const AgendaItemContent =   styled.div`
 
 
 const AgendaItem = ({item}) => {
-
+ 
     return (
         <ItemWrapper>
             <AgendaItemDate>{format(new Date(item.dateEvent), 'dd LLL', {locale: fr}) } <span>{format(new Date(item.dateEvent), 'yyyy', {locale: fr}) }</span></AgendaItemDate>
