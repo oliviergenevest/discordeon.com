@@ -80,8 +80,7 @@ export const indexQuery = graphql`
             placeholder: BLURRED,
             forceBlurhash: false,   
             height:130,
-            width:130,
-            aspectRatio:1,
+          
           )
         }
       }  
