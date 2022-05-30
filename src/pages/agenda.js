@@ -5,18 +5,14 @@ import Seo from '../components/Seo';
 import  BtnPrimary  from '../components/buttons/ButtonRounded';
 import  AgendaItem  from '../components/agenda/AgendaItem';
 import styled from 'styled-components';
-import { mq, colors, font } from '../consts/style'; 
-import { Icon } from '@iconify/react';
-import { FormattedMessage} from 'react-intl';
-import FormatDate  from '../components/formatDate'
+
 
 import {
   PageWrapper,
   PageInner,
   PageTitle,
   FocusText,
-  Text,
-  Flex,
+
   Spacer,
 } from '../components/Elements';
 
