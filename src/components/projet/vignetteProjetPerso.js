@@ -33,7 +33,7 @@ text-align:  ${props => (props.center  ? 'center' : 'left' )};
 margin-bottom:0;
 align-self: flex-start;
 padding-left:.5rem;
-font:1.4rem;
+font-size:1.4rem;
 `
 
 const VignetteImage =   styled(GatsbyImage)`
@@ -60,9 +60,9 @@ const VignetteTeaser =   styled(Text)`
 const VignetteProjetPerso = ({item, format}) => {
     return (
         <ItemWrapper to={item.slug} format= {format}>
-          <div>
-          {format == "full" && <><VignetteNom center>{item.nom}</VignetteNom><VignetteTeaser>{item.teaser}</VignetteTeaser></>}
-          </div>
+         
+          {format == "full" && <div><VignetteNom center>{item.nom}</VignetteNom><VignetteTeaser>{item.teaser}</VignetteTeaser></div>}
+          
           <VignetteImage image={item.imagePrincipale.gatsbyImageData} alt={item.nom}/>
           {format == "short" && <VignetteNom>{item.nom}</VignetteNom>}
           {format == "mini" && <VignetteNomSmall>{item.nom}</VignetteNomSmall>}
