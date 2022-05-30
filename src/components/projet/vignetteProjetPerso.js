@@ -1,10 +1,9 @@
-import React, { Fragment} from 'react';
-import { fr } from 'date-fns/locale';
-import { format } from 'date-fns';
+import React from 'react';
+
 import styled from 'styled-components';
 import { GatsbyImage } from "gatsby-plugin-image";
 import { Link } from 'gatsby';
-import { mq, colors, font } from '../../consts/style'; 
+import { mq, font } from '../../consts/style'; 
 import {
     Text,
   } from "../Elements"
@@ -28,8 +27,15 @@ const VignetteNom =   styled.h2`
   ${font.h2}  
   text-align:  ${props => (props.center  ? 'center' : 'left' )};
   margin-bottom:0;
-
 `
+const VignetteNomSmall=   styled.span`  
+text-align:  ${props => (props.center  ? 'center' : 'left' )};
+margin-bottom:0;
+align-self: flex-start;
+padding-left:.5rem;
+font:1.4rem;
+`
+
 const VignetteImage =   styled(GatsbyImage)`
   display:flex;
   ${mq.mobile`
@@ -59,6 +65,7 @@ const VignetteProjetPerso = ({item, format}) => {
           </div>
           <VignetteImage image={item.imagePrincipale.gatsbyImageData} alt={item.nom}/>
           {format == "short" && <VignetteNom>{item.nom}</VignetteNom>}
+          {format == "mini" && <VignetteNomSmall>{item.nom}</VignetteNomSmall>}
         </ItemWrapper>
     )
 }

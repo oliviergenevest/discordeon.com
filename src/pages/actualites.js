@@ -52,7 +52,7 @@ const NewsItem =  styled(Link)`
   }
   &:hover h2
   {
-   font-weight:600;
+   text-decoration:underline;
     transition: all .15s ease-in-out;
   }
 `

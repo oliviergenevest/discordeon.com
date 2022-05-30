@@ -3,15 +3,12 @@ import { graphql } from "gatsby"
 import { colors } from "../consts/style"
 import Seo from "../components/Seo"
 import ContactForm from "../components/ContactForm/ContactForm"
-import BtnPrimary from "../components/buttons/ButtonRounded"
-import { FormattedMessage} from 'react-intl';
+
 import {
   PageWrapper,
   PageInner,
   PageTitle,
-  SectionTitle,
   Text,
-  BgWrap,
   Grid2Col,
   Spacer,
 } from "../components/Elements"

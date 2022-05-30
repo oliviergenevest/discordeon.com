@@ -2,9 +2,7 @@ import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 import { colors, font } from "../consts/style"
 import Seo from "../components/Seo"
-import BtnPrimary from "../components/buttons/ButtonRounded"
 import VignetteProjetPerso from "../components/projet/vignetteProjetPerso"
-import { FormattedMessage} from 'react-intl';
 import _map from 'lodash/map';
 import styled from 'styled-components';
 
@@ -14,7 +12,6 @@ import {
   PageTitle,
   SectionTitle,
   Text,
-  FocusText,
   Flex,
   BgWrap,
   Grid3Col,

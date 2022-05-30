@@ -1,8 +1,7 @@
-import React, { Fragment} from 'react';
+import React from 'react';
 import { fr } from 'date-fns/locale';
 import { format } from 'date-fns';
 import styled from 'styled-components';
-import { GatsbyImage } from "gatsby-plugin-image"
 import { mq, colors, font } from '../../consts/style'; 
 import Link from '../ExtendedLink';
 import {
@@ -24,7 +23,7 @@ const ItemWrapper = styled.div`
     flex-direction:column;
     gap:0;
   `}
-&:after{
+ &:not(:last-child):after {
   position:absolute;
   content:"";
   bottom:-2rem;
@@ -49,7 +48,7 @@ const AgendaItemDate =   styled.div`
   display:block;
   width:180px;
   color:${colors.dark}; 
-  font-weight:700;
+  font-weight:600;
   
   font-size:2.4rem;
   text-transform:uppercase;

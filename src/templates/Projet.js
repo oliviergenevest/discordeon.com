@@ -1,22 +1,19 @@
-import React, { Fragment, useRef } from 'react';
+import React, { Fragment } from 'react';
 import {  graphql } from 'gatsby';
-import Link from '../components/ExtendedLink';
 import styled from 'styled-components';
 import _map from 'lodash/map';
-import { FormattedMessage} from 'react-intl';
 import  BtnPrimary  from '../components/buttons/ButtonRounded';
-import { Banner, PageWrapper, PageInner, Grid2Col,PageTitle, Title,Spacer,Flex, FocusText,Text2Col, ArrowLeftLink, ArrowRightLink, ArrowLeftIcon, ArrowRightIcon,Text } from '../components/Elements';
-import { colors, mq } from '../consts/style';
+import { PageWrapper, PageInner, BgWrap, PageTitle, Title,Spacer,Flex, FocusText,Text } from '../components/Elements';
+import { colors } from '../consts/style';
 import { projetTypes } from '../types/propTypes';
 import Seo from '../components/Seo';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import {StructuredText} from "react-datocms";
 import Video from '../components/video';
 import PlayerZik from '../components/players/PlayerZik';
-import  AgendaItem  from '../components/agenda/agendaItem';
+import  AgendaItem  from '../components/agenda/AgendaItem';
 import { Download } from '@styled-icons/bootstrap';
 import { Icon } from '@iconify/react';
-import facebookRect from '@iconify/icons-brandico/facebook-rect';
 
 
 /* ICONES LIEN SITES EXTERNES RUBRIQUE CONTACT */
@@ -26,7 +23,7 @@ const IconLink = ({to, icon, text}) => {
       {icon}
     </LinkSocial>
   )
-}
+};
 
 const LinkSocial = styled.a`
   display:flex;
@@ -35,7 +32,7 @@ const LinkSocial = styled.a`
   align-items:center;
   justify-content:center;
   padding:.5rem;
-`
+`;
 
 const PageInnerProject = styled.div`
   max-width: 780px; 
@@ -54,8 +51,7 @@ const EncartBtnWrapper  = styled.div`
 const AgendaListWrapper =   styled.div`
   display:flex;
   flex-direction:column;
-  width:100%; 
-  /*gap:5rem;*/
+  width:100%;
   margin-top:3rem;
 `
 const StyledGrid2Col = styled(Flex)`
@@ -80,7 +76,7 @@ const Block = styled.div`
 const Projet = ({ data, pageContext, location }) => {
 
   const {  nom, teaser, description2,  imagePrincipale, contacts, downloadFiles,seoMetaTags} = data.projet;
-/*  console.log(data.dates.nodes.length)*/
+
   return (
     <Fragment>
       <Seo meta={seoMetaTags} />
@@ -97,7 +93,7 @@ const Projet = ({ data, pageContext, location }) => {
           <GatsbyImage image={imagePrincipale.gatsbyImageData} alt={nom}  style={{marginBottom:"1rem",width:"100%"}}/>
 
           
-          {(description2.blocks.length > 0) && <StructuredText
+          {(description2.blocks.length > 0 ) && <StructuredText
             data={description2}
             renderBlock={({record}) => {
               if (record.__typename === "DatoCmsPlayerZik") {
@@ -175,7 +171,7 @@ const Projet = ({ data, pageContext, location }) => {
         <Spacer/>
         {/* Trier le tableau des dates de manière à n'avoir que le tableau des dates à venir et non passées */}
         {(data.dates.nodes.length > 0) &&  
-          <>
+          <BgWrap color={colors.blueLight}>
             <Text><h2>En tournée</h2></Text>      
             <AgendaListWrapper>
               { _map(data.dates.nodes, (item, i) => (
@@ -183,7 +179,7 @@ const Projet = ({ data, pageContext, location }) => {
                   <AgendaItem key={i} item={item}/>
               ))} 
             </AgendaListWrapper>
-          </>
+          </BgWrap>
         }
         
         </PageInnerProject>
@@ -243,10 +239,6 @@ export const projectQuery = graphql`
     }
     projet: datoCmsProjet(slug: { eq: $slug }, locale: {eq: $locale}) {
       nom
-      description
-
-
-
       description2 {
         value
         blocks {
@@ -277,13 +269,10 @@ export const projectQuery = graphql`
           ...on DatoCmsVideo {
             id: originalId
             video {
-             
                 url
                 title
                 providerUid
                 provider
-              
-              
             }
           }
         }
@@ -296,9 +285,7 @@ export const projectQuery = graphql`
 
         )
       } 
-
       contacts {
-       
         ... on DatoCmsPageInternet {
           id
           url
@@ -328,9 +315,7 @@ export const projectQuery = graphql`
           }
         }
       }
-
       downloadFiles {
-        
         filename
         title
         url

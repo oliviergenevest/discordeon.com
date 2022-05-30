@@ -60,8 +60,8 @@ const ContactForm = ({invisible=false}) =>
 		        <Textarea name="message" placeholder="Message"id="message" rows="6" required />
 				<StyledFlex>
 					<Input placeholder="Newsletter" type="checkbox" name="newsletter" id="newsletter" style={{width:"auto"}}/>
-					<label htmlFor="newsletter">J'accepte de recevoir la newsletter Discordéon</label>
-					<span>J'accepte de recevoir la newsletter Discordéon</span>
+					<label htmlFor="newsletter">J'accepte de recevoir la newsletter trimestrielle Discordéon</label>
+					<span>J'accepte de recevoir la newsletter trimestrielle Discordéon</span>
 				</StyledFlex>
 			    <div className="actions">
 					   <FormattedMessage id="send">{txt =><BtnPrimary as="input" type="submit" value={txt} />}</FormattedMessage>

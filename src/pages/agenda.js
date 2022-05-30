@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import _map from 'lodash/map';
 import Seo from '../components/Seo';
 import  BtnPrimary  from '../components/buttons/ButtonRounded';
-import  AgendaItem  from '../components/agenda/agendaItem';
+import  AgendaItem  from '../components/agenda/AgendaItem';
 import styled from 'styled-components';
 import { mq, colors, font } from '../consts/style'; 
 import { Icon } from '@iconify/react';

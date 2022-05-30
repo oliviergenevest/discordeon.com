@@ -1,8 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
 
-import Link from '../ExtendedLink';
-import { colors } from '../../consts/style';
 
 
 
@@ -17,13 +14,14 @@ switch (type) {
         scrolling="no" 
         frameBorder="no" 
         allow="autoplay" 
-        
         src={'https://w.soundcloud.com/player/?url='+urlPlayer+'&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=false&show_reposts=false&show_teaser=false&visual=false'}>
         </iframe>;
     case 'bandcamp' : 
       return <iframe 
+      width="100%" 
+      height="300" 
         frameBorder="no" 
-        src={'https://bandcamp.com/EmbeddedPlayer/album='+urlPlayer+'/size=large/bgcol=ffffff/linkcol=000000/tracklist=false/artwork=small/transparent=true/'} seamless>
+        src={'https://bandcamp.com/EmbeddedPlayer/album='+urlPlayer+'/size=large/bgcol=ffffff/linkcol=000000/tracklist=true/artwork=small/transparent=true/'} seamless>
         </iframe>;
     default:
       return "not set";

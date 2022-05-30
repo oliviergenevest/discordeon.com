@@ -1,31 +1,21 @@
-import React, { Fragment, useRef } from "react"
+import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 import { Icon } from '@iconify/react';
-import styled from "styled-components"
-import _map from "lodash/map"
+import styled from "styled-components";
+import _map from "lodash/map";
 import { GatsbyImage } from 'gatsby-plugin-image';
-import FormatDate  from '../components/formatDate'
-import BtnPrimary from "../components/buttons/ButtonRounded"
+import FormatDate  from '../components/formatDate';
 import {
-  Banner,
   PageWrapper,
   PageInner,
   Title,
   PageTitle,
   Spacer,
   Legende,
-  ArrowLeftLink,
-  ArrowRightLink,
-  ArrowLeftIcon,
-  ArrowRightIcon,
   Text,
-} from "../components/Elements"
-import { colors, mq } from "../consts/style"
-import Seo from "../components/Seo"
-import Boop from "../components/boop"
-
-
-
+} from "../components/Elements";
+import { colors, mq } from "../consts/style";
+import Seo from "../components/Seo";
 
 const PageInnerNews = styled.div`
   width: 100%;

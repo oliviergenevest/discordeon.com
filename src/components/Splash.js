@@ -1,17 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Link from './ExtendedLink';
-import { colors, space, font } from '../consts/style';
-import { FormattedMessage} from 'react-intl';
-import Img from 'gatsby-image';
+import { colors, mq } from '../consts/style';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import ModalWindow from './modal/modal-window'
-import { useModalWithData } from '../hooks/modal-hook'
-import {  Text, ArrowLeftLink, ArrowRightLink, ArrowLeftIcon, ArrowRightIcon  } from './Elements';
 import backgroundImage from "../images/splash-background.jpg"
-import Boop from './boop';
-import  BtnPrimary  from './buttons/ButtonRounded';
-import {useIntl} from 'react-intl';
 
 const WrapperSplash = styled.div`
   max-height: 500px;
@@ -46,6 +37,9 @@ const Teaser = styled.h1`
   font-size:2.4rem; 
   text-align:center;
   max-width:862px;
+  ${mq.tabletSmall`
+  font-size:1.8rem; 
+  `}
 `;
 
 
