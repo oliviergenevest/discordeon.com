@@ -41,7 +41,7 @@ export default LightboxHeader;
 const GalleryHeading = styled.h2`
     margin: 0 0 5px 0;
     font-weight: normal;
-`;
+`; 
 
 const GallerySubheading = styled.h4`
     margin: 0;
