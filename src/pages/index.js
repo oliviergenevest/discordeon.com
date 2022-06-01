@@ -25,7 +25,7 @@ import Seo from '../components/Seo';
 import Video from '../components/video';
 import PlayerZik from '../components/players/PlayerZik';
 import Splash from '../components/Splash';
-import  AgendaItem  from '../components/agenda/AgendaItem';
+/*import  AgendaItem  from '../components/agenda/AgendaItem';*/
 import  AgendaItemShort  from '../components/agenda/AgendaItemShort';
 
 export const indexQuery = graphql`
@@ -231,7 +231,7 @@ const IndexPage = ({ data, pageContext }) => {
                   <AgendaListWrapper>
                   { _map(nodes.slice(0,6), (item, i) => (
                     (new Date(item.dateEvent) >= new Date()) && 
-                      <AgendaItemShort key={i} item={item}/>
+                      <AgendaItemShort key={i} item={item} path="projets/"/>
                   
                   ))}
                   </AgendaListWrapper> 

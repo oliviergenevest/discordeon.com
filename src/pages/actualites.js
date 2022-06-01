@@ -18,7 +18,6 @@ import {
   PageTitle,
   FocusText,
   Text,
-  Flex,
   Spacer,
 } from '../components/Elements';
 
@@ -42,7 +41,7 @@ const NewsItem =  styled(Link)`
     flex-direction:column;
     gap:1rem;
   `}
-  &:after{
+  &:not(:last-child):after{
     position:absolute;
     content:"";
     bottom:-3rem;

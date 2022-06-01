@@ -5,11 +5,7 @@ import styled from 'styled-components';
 import { mq, colors, font } from '../../consts/style'; 
 import Link from '../ExtendedLink';
 import {
-  
-    Text,
-
-    Grid2Col,
-   
+    Text 
   } from "../Elements"
 const ItemWrapper = styled.div`
   display:flex;

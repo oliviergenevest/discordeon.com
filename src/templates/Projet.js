@@ -14,7 +14,7 @@ import PlayerZik from '../components/players/PlayerZik';
 import  AgendaItem  from '../components/agenda/AgendaItem';
 import { Download } from '@styled-icons/bootstrap';
 import { Icon } from '@iconify/react';
-
+import GalleryLightbox from '../components/GalleryLightbox/GalleryLightbox'
 
 /* ICONES LIEN SITES EXTERNES RUBRIQUE CONTACT */
 const IconLink = ({to, icon, text}) => {
@@ -113,8 +113,15 @@ const Projet = ({ data, pageContext, location }) => {
                             videoTitle={record.video.title}
                           />
                         </Block>
-             }
-             if (record.__typename === "DatoCmsTexte") {
+              }
+
+              if (record.__typename === "DatoCmsGallerieImage") {
+                return  <Block>
+                  <GalleryLightbox images={record.images} />
+
+                        </Block>
+              }
+              if (record.__typename === "DatoCmsTexte") {
               return  <Text dangerouslySetInnerHTML={{ __html:record.texte }}/>
            }
 
@@ -234,6 +241,7 @@ export const projectQuery = graphql`
         dateEvent
         projet {
           nom
+          slug
         }
       }
     }
@@ -254,7 +262,10 @@ export const projectQuery = graphql`
             id: originalId
             images {
               title
-              gatsbyImageData
+              url
+              gatsbyImageData (
+                height:200
+              )
             }
           }
           ...on DatoCmsTexte {

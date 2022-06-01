@@ -35,6 +35,7 @@ const FlexProjetsPerso = styled(Flex)`
 
 const StyledGrid3Col = styled(Grid3Col)`
 margin-left:15rem;
+grid-gap:2rem;
 `;
 
 
@@ -125,7 +126,7 @@ const ProjetsPage =  ({ data }) => {
         <PageInner>
           <TitleProjet>{titreProjetsPersos}</TitleProjet>
           <Text dangerouslySetInnerHTML={{ __html: descriptionProjetsPersos }}  style={{'paddingLeft':'3rem'}}/>
-       
+          <Spacer/>
           <FlexProjetsPerso>
             { _map(projetsPerso, (item, i) => (
                   <VignetteProjetPerso key={i} item={item} format="full"/>
@@ -137,6 +138,7 @@ const ProjetsPage =  ({ data }) => {
         <PageInner>
           <TitleProjet>{titreProjetsActuels}</TitleProjet>
           <Text dangerouslySetInnerHTML={{ __html: descriptionProjetsActuels }} style={{'paddingLeft':'3rem'}}/>
+          <Spacer/>
           <StyledGrid3Col>
             { _map(projetsActuels, (item, i) => (
                   <VignetteProjetPerso key={i} item={item} format="short"/>
@@ -148,9 +150,10 @@ const ProjetsPage =  ({ data }) => {
         <PageInner>         
           <TitleProjet>{titreProjetsPasses}</TitleProjet>
           <Text dangerouslySetInnerHTML={{ __html: descriptionProjetsPasses }}  style={{'paddingLeft':'3rem'}}/>
+          <Spacer/>
           <StyledGrid3Col>
             { _map(projetsPasses, (item, i) => (
-                  <VignetteProjetPerso key={i} item={item} format="short"/>
+                  <VignetteProjetPerso key={i} item={item} format="mini"/>
             ))}
           </StyledGrid3Col>
         </PageInner>
