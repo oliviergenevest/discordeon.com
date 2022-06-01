@@ -73,8 +73,9 @@ const LeftSideDescriptionContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-left: 1rem;
+    padding-top: 1rem;
 
-    /*padding: 8px 0 8px 10px;*/
 `;
 
 const TopHeaderBar = styled.header`

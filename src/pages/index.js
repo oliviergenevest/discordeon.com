@@ -183,6 +183,7 @@ const GridProjets =   styled.div`
   display:flex;
   gap:  1rem;
   flex-wrap: wrap;
+  justify-content: center;
 `
 
 const IndexPage = ({ data, pageContext }) => {
@@ -241,8 +242,7 @@ const IndexPage = ({ data, pageContext }) => {
            
           </Grid2ColAsym>
           </PageInner>
-          <PageInner>
-          </PageInner>
+         
        
           <Spacer/>
           <Spacer/>
@@ -250,7 +250,6 @@ const IndexPage = ({ data, pageContext }) => {
           <PageInner>
           
               <SectionTitle centered   dangerouslySetInnerHTML={{ __html: titreDeLaSectionRegarderEcouter }}/>
-              <center><BtnPrimary to='/projets'><FormattedMessage id="Projets et collaborations"/></BtnPrimary></center>
 
               <Spacer/>
                 <Grid2Col>
@@ -281,7 +280,9 @@ const IndexPage = ({ data, pageContext }) => {
           </PageInner>
           </BgWrap>
           <Spacer/>
-          <PageInner>
+          <PageInner><Spacer/>
+          <center><BtnPrimary to='/projets'><FormattedMessage id="Projets et collaborations"/></BtnPrimary></center>
+          <Spacer/>
             <GridProjets>
               { _map(data.projets.nodes, (item, i) => (
                     <VignetteProjetPerso key={i} item={item} format="mini"/>
