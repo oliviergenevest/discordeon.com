@@ -117,8 +117,7 @@ const Projet = ({ data, pageContext, location }) => {
 
               if (record.__typename === "DatoCmsGallerieImage") {
                 return  <Block>
-                  <GalleryLightbox images={record.images} />
-
+                          <GalleryLightbox images={record.images} />
                         </Block>
               }
               if (record.__typename === "DatoCmsTexte") {
