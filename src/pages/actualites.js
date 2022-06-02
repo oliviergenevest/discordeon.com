@@ -26,39 +26,44 @@ const NewsListWrapper =   styled.div`
 display:flex;
 flex-direction:column;
 width:100%; 
-margin-top:8rem;
+margin-top:0;
 `
 
 const NewsItem =  styled(Link)`
   display:flex;
+  border-radius:4px;
+
   position: relative;
   flex-direction:row;
   align-items:flex-start;
   width:100%;
-  margin-bottom:6rem;
-  gap:3rem;
+  margin-bottom:4rem;
+  gap:2rem;
   ${mq.tabletSmall`
     flex-direction:column;
     gap:1rem;
   `}
-  &:not(:last-child):after{
+ /* &:not(:last-child):after{
     position:absolute;
     content:"";
     bottom:-3rem;
     width:100%;
     height:1px;
     background-color:${colors.yellow};
-  }
+  }*/
   &:hover h2
   {
    text-decoration:underline;
     transition: all .15s ease-in-out;
   }
+
+  background-color:${colors.greenLight};
+  &:nth-child(even) {     background-color:${colors.blueLight};}
 `
 
 const NewsItemImage =   styled(GatsbyImage)`  
   min-width:340px;
-  border-radius:4px;
+  /*border-radius:4px;*/
   ${mq.tabletSmall`
    height:100%;
    width:100%;
@@ -83,8 +88,11 @@ const NewsItemDate =   styled.div`
 const NewsItemContent =   styled.div`
   display:flex;
   margin-left:1.5rem;
-  ${mq.mobile`
+  padding: 1rem;
+  padding-right:2.5rem;
+  ${mq.tabletSmall`
   margin-left:0;
+  padding:0 2rem;
   `}
   flex-direction:column;
   width:100%;

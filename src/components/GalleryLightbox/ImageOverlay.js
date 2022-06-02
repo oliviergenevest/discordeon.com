@@ -3,9 +3,7 @@ import styled from 'styled-components';
 
 
 const ImageOverlay = () => (
-    <OverlayContainer>
-      
-    </OverlayContainer>
+    <OverlayContainer></OverlayContainer>
 );
 
 export default ImageOverlay;

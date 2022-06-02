@@ -5,8 +5,6 @@ import {
   PageWrapper,
   PageInner,
   PageTitle,
-
-  Banner,
 } from '../components/Elements';
 
 export const dataPrivacyQuery = graphql`

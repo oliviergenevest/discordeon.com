@@ -16,7 +16,7 @@ export const colors = {
   orange:'#FF8563', //orangle fluo discordeon
   yellow:'#40FF39', // vert fluo discordeon
   yellowLight:'#F1EFD4',
-
+  greenLight:'#40ff381f',
 
 
   grey:'#E8E7E7',
@@ -77,11 +77,11 @@ export const font = {
 `,
 // gros titre centré
   title:  ` 
-            font-size:6.4rem;
+            font-size:4.4rem;
             line-height:normal;
             font-weight:600;
             @media screen and (max-width: ${mQueryPoint.tablet}) {
-              font-size: 3.6rem;
+              font-size: 3.4rem;
             }
           `,
   h2: `

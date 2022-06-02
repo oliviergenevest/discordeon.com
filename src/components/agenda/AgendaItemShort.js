@@ -34,8 +34,8 @@ const AgendaItemProjetShort =   styled(Link)`
   font-size:1.4rem;
   width:150px;
   color:${colors.blue};  
-  ${mq.mobile`
-  width:100%;
+  ${mq.tablet`
+  display:inline-block;
   `}
  
 `
@@ -46,6 +46,10 @@ const AgendaItemDateShort =   styled.div`
   font-weight:600;
   font-size:2.4rem;
   text-transform:uppercase;
+  ${mq.tablet`
+    display:inline-block;
+    padding-right:1rem;
+  `}
 `
 
 const AgendaItemContentShort =   styled.div`

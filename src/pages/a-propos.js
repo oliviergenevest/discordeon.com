@@ -16,7 +16,7 @@ import {
   PageTitle,
   FocusText,
   Text,
-  Flex,
+Legende,
   Grid2Col,
   Spacer,
  
@@ -37,15 +37,16 @@ export const aProposPageQuery = graphql`
         gatsbyImageData( 
           placeholder: BLURRED,
           forceBlurhash: false,
-          width:600
+          width:315
         )
       }
       photoBiographie {
         gatsbyImageData(      
           placeholder: BLURRED,
           forceBlurhash: false,
-          width:450
+          width:571
         )
+        title
       }
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
@@ -66,19 +67,21 @@ const AProposPage = ({data}) => {
      
         <PageInner>
           <PageTitle dangerouslySetInnerHTML={{ __html: titre }} />
-
-        <Grid2Col>
+          <FocusText maxWidth="700px"  dangerouslySetInnerHTML={{ __html: aPropos }} />
+          <Spacer/>
+          <Spacer/>
+       {/*  <Grid2Col>
           <div>
               
-              <FocusText dangerouslySetInnerHTML={{ __html: aPropos }} />
+           
              
 
               <br/>
             </div>
            <div><GatsbyImage image={illustration.gatsbyImageData} style={{marginBottom:"10rem"}} alt="Discordéon"/> </div>
-        </Grid2Col>
+        </Grid2Col>*/}
         <Grid2Col>
-          <div><GatsbyImage image={photoBiographie.gatsbyImageData} style={{marginBottom:"2rem"}} alt="Antoine Girard"/></div>
+          <div><GatsbyImage image={photoBiographie.gatsbyImageData}  alt="Antoine Girard"/> <Legende>{photoBiographie.title}</Legende><Spacer/></div>
          
           <Text dangerouslySetInnerHTML={{ __html: biographie }} />
         </Grid2Col>

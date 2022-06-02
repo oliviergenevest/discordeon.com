@@ -32,6 +32,34 @@ export const Banner = styled.div`
 
 `;
 
+
+export const BgWrap = styled.div`
+  position:relative;
+  background:${props => props.color ? props.color : '#E8E7E7' };
+  width: calc(100% + 4rem);
+  /*overflow: hidden;*/
+  flex-direction: column;
+  align-items: center;
+  padding:2rem 2rem 2rem 2rem;
+  margin: 0;
+  margin-left:-2rem;
+  margin-right:-2rem;
+  /* bottom curved prop */
+  & :after { 
+    content: "";
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    background-color: #F3F3F3 ;
+    bottom: 0;
+    left: 0;
+    transform: translateY(50%);
+    border-radius: 0 0 100% 100%;
+    display:${props => props.curved ? "block" : "none"};
+  } ;
+ 
+`;
+
 export const PageWrapper = styled.div`
   min-height: calc(100vh - 10rem);
   display: flex;
@@ -39,8 +67,17 @@ export const PageWrapper = styled.div`
   justify-content: flex-start;
   align-items: center;
   max-width: 100%;
-  padding: 2rem;
+  padding: 4rem;
   color: ${colors.dark};
+
+  & ${BgWrap} {
+    margin-top:-2rem!important;
+  }
+
+  ${mq.tablet`
+  padding: 2rem;
+`}
+
 `;
 
 export const PageInner = styled.div`
@@ -74,7 +111,7 @@ export const FocusText = styled.div`
   ${font.subtitle}
    color:${props => props.color ? props.color : colors.blue };
    margin:0 0 ${space.half} ;
-   text-align:${props => props.centered ? 'center' : 'inherit' };
+   text-align:${props => props.centered ? 'center' : 'justify' };
    max-width:${props => props.maxWidth ?  props.maxWidth : 'none' };
   ${mq.tabletSmall_up`
       margin:0 auto;
@@ -98,32 +135,6 @@ export const Text = styled.div`
   }
 `;
 
-export const BgWrap = styled.div`
-  position:relative;
-  background:${props => props.color ? props.color : '#E8E7E7' };
-  width: calc(100% + 4rem);
-  /*overflow: hidden;*/
-  flex-direction: column;
-  align-items: center;
-  padding:2rem 2rem 2rem 2rem;
-  margin:5rem 0;
-  margin-left:-2rem;
-  margin-right:-2rem;
-  /* bottom curved prop */
-  & :after { 
-    content: "";
-    position: absolute;
-    height: 50px;
-    width: 100%;
-    background-color: #F3F3F3 ;
-    bottom: 0;
-    left: 0;
-    transform: translateY(50%);
-    border-radius: 0 0 100% 100%;
-    display:${props => props.curved ? "block" : "none"};
-  } ;
- 
-`;
 
 
 export const GridBienvenue= styled.div`
@@ -203,13 +214,13 @@ export const Text2Col = styled.div`
 `;
 
 export const Grid2Col = styled.div`
-  display: block;
-  ${mq.tablet_up`
     display:grid;
-    grid-template-columns: 1fr 1fr;  
-
-    column-gap:5%;   
+    grid-template-columns: 1fr;   
+    grid-row-gap: 4rem;
     align-items: flex-start; // aligné en haut de la colonne
+  ${mq.tablet_up`
+    grid-template-columns: 1fr 1fr;  
+    column-gap:4%;   
  `}
 `;
 

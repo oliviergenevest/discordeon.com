@@ -21,28 +21,23 @@ const PageInnerNews = styled.div`
   width: 100%;
   position: relative;
   display: grid;
-
   grid-template-columns: 1fr 2fr;
   grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
   grid-gap: 5rem;
-
-  ${mq.tablet` 
+  ${mq.tablet ` 
   grid-template-columns: 1fr;
   grid-template-columns:minmax(0, 1fr);
   grid-gap:1rem;
   `}
 `
 
-
-const LeftContainer =   styled.div`
+const LeftContainer = styled.div`
   background: #EBEBF3;
   padding: 2.5rem;
   padding-right:5rem;
   color:${colors.blue};
 `
-
-
-const NewsItemDate =   styled.div`
+const NewsItemDate = styled.div`
   display:flex;
   width:100%;
   align-items:center;
@@ -61,7 +56,6 @@ const News = ({ data, pageContext, location }) => {
   const {
     titre,
     image,
-    teaser,
     contenu,
     colonneGauche,
     meta,
@@ -110,7 +104,6 @@ export const newsQuery = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
       colonneGauche
-      teaser
       contenu
       meta {
         createdAt

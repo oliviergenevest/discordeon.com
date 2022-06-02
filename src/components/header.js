@@ -65,8 +65,14 @@ const HeaderInner = styled.div`
   width: 124rem;
   justify-content: space-between;
   align-items: center;
-  padding:  3rem 0;
-     /* flex-wrap: nowrap;*/
+  padding: 2rem 0;
+  ${mq.tabletSmall`
+    padding:  1.5rem 0;
+  `}
+  ${mq.mobile`
+      padding: 1rem 0;
+    }
+  `}
 `;
 
 
@@ -146,13 +152,13 @@ const LogoLink = styled(LinkHeader)`
   height:100%;
   ${mq.tabletSmall`
   svg { 
-    height:6rem;
+    height:5rem;
     width: auto!important;
   }
 `}
    ${mq.mobile`
       svg { 
-        height:5rem;
+        height:3rem;
         width: auto!important;
       }
     `}
@@ -258,9 +264,10 @@ export default function Header({ location }) {
  
   const [mobileNavOpen, setMobileNavOpen] = useState(false) // mobile menu closed by default
   const MenuAnimation = useSpring({
-  native: true,
-  to: { opacity: mobileNavOpen ? 1 : 0, transform: mobileNavOpen ? 'translate3d(0,0,0)' : 'translate3d(0,-100%, 0)', backgroundColor: mobileNavOpen ? colors.dark : '#fff'},
-  })
+    config: { mass: 1, tension: 210, friction: 20, clamp:true },
+    native: true,
+    to: { opacity: mobileNavOpen ? 1 : 0, transform: mobileNavOpen ? 'translate3d(0,0,0)' : 'translate3d(0,-100%, 0)', backgroundColor: mobileNavOpen ? colors.dark : '#fff'},
+    })
 
   return (
     <> 
@@ -292,13 +299,13 @@ export default function Header({ location }) {
             <IconLink to="https://www.facebook.com/discordeon" icon={<Icon title="Facebook" icon={facebookRect} style={{color: colors.yellow, fontSize: '20px'}} />}  text="Facebook"/>     
           </MenuItem>
           <MenuItem> 
-            <IconLink to="https://www.instagram.com/discordeon" icon={<Icon title="Instagram" icon={instagramIcon} style={{color: colors.yellow, fontSize: '20px'}} />} text="Instagram"/>
+            <IconLink to="https://www.instagram.com/discordeonmusic/" icon={<Icon title="Instagram" icon={instagramIcon} style={{color: colors.yellow, fontSize: '20px'}} />} text="Instagram"/>
           </MenuItem>
         </MainMenu>
        
         
         <BurgerMenu  onClick={() => {setMobileNavOpen(true)}}
-    aria-label="Navigation"><StyledMenuAltRight title="Navigation" size="48"/></BurgerMenu>
+    aria-label="Navigation"><StyledMenuAltRight title="Navigation" size="38"/></BurgerMenu>
       </HeaderInner>
     </Wrapper>
 
@@ -327,7 +334,7 @@ export default function Header({ location }) {
             <ItemMobileNav>
               <IconLink to="https://www.facebook.com/discordeon" icon={<Icon title="Facebook" icon={facebookRect} style={{color: colors.yellow, fontSize: '28px', margin:'10px'}} />}  text="Facebook"/>     
           {"  "}
-              <IconLink to="https://www.instagram.com/discordeon" icon={<Icon title="Instagram" icon={instagramIcon} style={{color: colors.yellow, fontSize: '28px', margin:'10px'}} />} text="Instagram"/>
+              <IconLink to="https://www.instagram.com/discordeonmusic/" icon={<Icon title="Instagram" icon={instagramIcon} style={{color: colors.yellow, fontSize: '28px', margin:'10px'}} />} text="Instagram"/>
             </ItemMobileNav>
           </nav>
          

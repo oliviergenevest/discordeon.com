@@ -17,8 +17,8 @@ import Global from '../style/global';
 import Modals from '../modals';*/
 /*import CookieConsent from 'react-cookie-consent';*/
 import { FormattedMessage} from 'react-intl';
-import { layoutTypes } from '../types/propTypes';
 
+import Splash from '../components/Splash';
 import {Text} from '../components/Elements'
 const messages = { en, fr };
 
@@ -36,7 +36,7 @@ const Layout = ({ children, pageContext, location }) => {
       <SiteWrapper id="top">
         <Reboot />
         <Global />
-             
+      
         <Headroom id={(location.pathname === '/' || location.pathname ==='/en' || location.pathname ==='/en/') ? "splash-headroom" : undefined}>  
           <Header location={location}   />
         </Headroom>
@@ -65,7 +65,5 @@ const Layout = ({ children, pageContext, location }) => {
    
   );
 };
-
-Layout.propTypes = layoutTypes;
 
 export default Layout;

@@ -45,9 +45,10 @@ strong {
 
 /* Pour la page d'accueil : header transparent en mode initial (avant scroll) */
 
+
+
 #splash-headroom:not(.headroom--pinned) > div:first-of-type  {
   background:white;
- 
   box-shadow: none;
   & svg path {
     fill: #01026C;

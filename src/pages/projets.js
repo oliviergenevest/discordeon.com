@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import { graphql } from "gatsby"
-import { colors, font } from "../consts/style"
+import { colors, font, mq } from "../consts/style"
 import Seo from "../components/Seo"
 import VignetteProjetPerso from "../components/projet/vignetteProjetPerso"
 import _map from 'lodash/map';
@@ -36,6 +36,12 @@ const FlexProjetsPerso = styled(Flex)`
 const StyledGrid3Col = styled(Grid3Col)`
 margin-left:15rem;
 grid-gap:2rem;
+${mq.tabletSmall`
+margin-left:0;
+display:grid;
+grid-template-columns: 1fr 1fr;  
+
+`}
 `;
 
 
@@ -118,12 +124,11 @@ const ProjetsPage =  ({ data }) => {
     <Fragment>
       <Seo meta={seoMetaTags} />
       <PageWrapper>
-        <PageInner>
-          <PageTitle>{titre}</PageTitle>
-        </PageInner>
+      
         
-        <BgWrap color={colors.blueLight}>
+        <BgWrap color={colors.greenLight}>
         <PageInner>
+        <PageTitle>{titre}</PageTitle>
           <TitleProjet>{titreProjetsPersos}</TitleProjet>
           <Text dangerouslySetInnerHTML={{ __html: descriptionProjetsPersos }}  style={{'paddingLeft':'3rem'}}/>
           <Spacer/>
@@ -134,7 +139,9 @@ const ProjetsPage =  ({ data }) => {
            </FlexProjetsPerso>
            </PageInner>
         </BgWrap>
+
         <Spacer/>
+
         <PageInner>
           <TitleProjet>{titreProjetsActuels}</TitleProjet>
           <Text dangerouslySetInnerHTML={{ __html: descriptionProjetsActuels }} style={{'paddingLeft':'3rem'}}/>
@@ -147,16 +154,18 @@ const ProjetsPage =  ({ data }) => {
         </PageInner>
         <Spacer/>
         <Spacer/>
-        <PageInner>         
-          <TitleProjet>{titreProjetsPasses}</TitleProjet>
-          <Text dangerouslySetInnerHTML={{ __html: descriptionProjetsPasses }}  style={{'paddingLeft':'3rem'}}/>
-          <Spacer/>
-          <StyledGrid3Col>
-            { _map(projetsPasses, (item, i) => (
-                  <VignetteProjetPerso key={i} item={item} format="mini"/>
-            ))}
-          </StyledGrid3Col>
-        </PageInner>
+        <BgWrap color={colors.blueLight}>
+          <PageInner>         
+            <TitleProjet>{titreProjetsPasses}</TitleProjet>
+            <Text dangerouslySetInnerHTML={{ __html: descriptionProjetsPasses }}  style={{'paddingLeft':'3rem'}}/>
+            <Spacer/>
+            <StyledGrid3Col>
+              { _map(projetsPasses, (item, i) => (
+                    <VignetteProjetPerso key={i} item={item} format="mini"/>
+              ))}
+            </StyledGrid3Col>
+          </PageInner>
+        </BgWrap>
         <Spacer/>
         <Spacer/>
       </PageWrapper>

@@ -10,7 +10,6 @@ import {
   PageTitle,
   Text,
   Grid2Col,
-  Spacer,
 } from "../components/Elements"
 
 export const contactQuery = graphql`
@@ -43,9 +42,9 @@ const ContactPage =  ({ data }) => {
           <PageTitle>{titre}</PageTitle>
           
         </PageInner>
-        <Spacer id="contact" />
+        
       
-          <PageInner>
+          <PageInner id="contact">
             <Grid2Col>
               <div> 
                 <Text

@@ -122,7 +122,7 @@ const Footer= ({ location }) => {
       <FooterBottom>
       <FlexIconeWrapper>
           <IconLink to="https://www.facebook.com/discordeon" icon={<Icon title="Facebook" icon={facebookRect} style={{color: colors.dark, fontSize: '28px'}} />} text="Facebook"/>
-          <IconLink to="https://www.instagram.com/discordeon" icon={<Icon icon={instagramIcon} style={{color: colors.dark, fontSize: '28px'}} />} text="Instagram"/>
+          <IconLink to="https://www.instagram.com/discordeonmusic/" icon={<Icon icon={instagramIcon} style={{color: colors.dark, fontSize: '28px'}} />} text="Instagram"/>
         </FlexIconeWrapper>
         <Link to="/credits"> <FormattedMessage id="footer__credits"/></Link> - <Link to="/mentions-legales"> <FormattedMessage id="footer__mentions-legales"/></Link> - <Link to="/protection-des-donnees"><FormattedMessage id="footer__data-protection"/></Link>{/* -   <GLink to="/en">EN</GLink> | <GLink to="/">FR</GLink> */}
         <br/><span>© Discordéon - {year} </span>

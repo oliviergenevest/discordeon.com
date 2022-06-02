@@ -35,7 +35,7 @@ export const indexQuery = graphql`
       logo {
         title
         gatsbyImageData (
-          height:195
+          height:150
         )
         
       }
@@ -79,7 +79,8 @@ export const indexQuery = graphql`
           gatsbyImageData(
             placeholder: BLURRED,
             forceBlurhash: false,   
-            height:130,
+            height:150,
+            width:250,
           
           )
         }
@@ -101,7 +102,7 @@ export const indexQuery = graphql`
           gatsbyImageData(
             placeholder: BLURRED,
             forceBlurhash: false,   
-            width:710,
+            width:740,
           )
         }
       }
@@ -127,24 +128,27 @@ export const indexQuery = graphql`
 `;
 
 const AgendaListWrapper =   styled.div`
-display:flex;
-flex-direction:column;
-width:100%; 
-/*gap:5rem;*/
-margin-top:8rem;
+  display:flex;
+  flex-direction:column;
+  width:100%; 
+  margin:1rem 0;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  padding-bottom: 0;
+  background-color:${colors.greenLight};
 `
-
 
 const News = styled.div`
   margin:0 auto;
-  max-width:705px;
-  margin-top:2rem;
+  margin-top:1rem;
   h2 {
     a { ${font.h2}}
     ${font.h2}
     transition: all .15s ease-in-out;
     text-transform:none;
   }
+ /* background-color:${colors.greenLight};
+  padding:2rem;*/
   
 `
 
@@ -178,12 +182,31 @@ const Grid2ColAsym =   styled.div`
   display:grid;
   grid-template-columns:2fr 1fr;
   grid-gap:8%;
+  ${mq.tabletSmall`
+   
+  display:block;
+
+ `}
 `
 const GridProjets =   styled.div`
-  display:flex;
-  gap:  1rem;
-  flex-wrap: wrap;
-  justify-content: center;
+  margin-top:1rem;
+  padding:2rem;  
+  display:grid;
+  grid-gap:  1rem;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-rows: minmax(150px, auto);
+  /*grid-auto-rows: 150px;*/
+  ${mq.tablet`
+    grid-template-columns: repeat(4, 1fr);
+  `}
+  ${mq.tabletSmall`
+    grid-template-columns: repeat(3, 1fr);
+  `}
+  ${mq.mobile`
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: minmax(150px, auto);
+  `}
+
 `
 
 const IndexPage = ({ data, pageContext }) => {
@@ -199,56 +222,15 @@ const IndexPage = ({ data, pageContext }) => {
     seoMetaTags
   } = data.datoCmsAccueilPage;
   const { nodes } = data.agenda; // toutes les dates
-  
-  console.log(data.projets.nodes);
+ // console.log(data.projets.nodes);
   return (
     <Fragment>
       <Seo meta={seoMetaTags} />
       <Splash teaser={teaser}  logo={logo} />
-      <PageWrapper>
-      
-        <PageInner>
-        <Grid2ColAsym>
-          <div>
-                <PageTitle centered >actu</PageTitle> 
-                { _map(data.news.nodes, (lastnews, i) => (
-                  
-                <News key={i}>
-                  <NewsItemDate>
-                    <Icon title="Date" icon="ant-design:calendar-twotone" style={{color: colors.dark, fontSize: '20px'}} />
-                    <FormatDate date={lastnews.meta.createdAt}/>
-                  </NewsItemDate>
-                  <h2><Link to='./actualites' title={lastnews.titre}>{lastnews.titre}</Link></h2>
-                  <NewsItemImage image={lastnews.image.gatsbyImageData} alt={lastnews.titre}/>
-                  <Legende>{lastnews.image.title}</Legende>
-                  <Text dangerouslySetInnerHTML={{ __html: lastnews.teaser}}/>
-                  <BtnPrimary to={`/actualites/${lastnews.slug}/`}><FormattedMessage id="lire la suite"/></BtnPrimary>
-                  </News>
-                  )
-                )}
-          </div>
-          <div> 
-                  <PageTitle centered  dangerouslySetInnerHTML={{ __html: titreDeLaSectionAgenda }}/>
-                  <AgendaListWrapper>
-                  { _map(nodes.slice(0,6), (item, i) => (
-                    (new Date(item.dateEvent) >= new Date()) && 
-                      <AgendaItemShort key={i} item={item} path="projets/"/>
-                  
-                  ))}
-                  </AgendaListWrapper> 
-                  <BtnPrimary to={`/agenda`}><FormattedMessage id="btn__toutes les dates"/></BtnPrimary>
-                 
-            </div>
-           
-          </Grid2ColAsym>
-          </PageInner>
-         
-       
-          <Spacer/>
-          <Spacer/>
-          <BgWrap color={colors.blueLight}>
+      <PageWrapper id="top-content">
+      <BgWrap color={colors.blueLight}>
           <PageInner>
-          
+          <Spacer/>
               <SectionTitle centered   dangerouslySetInnerHTML={{ __html: titreDeLaSectionRegarderEcouter }}/>
 
               <Spacer/>
@@ -276,19 +258,68 @@ const IndexPage = ({ data, pageContext }) => {
                     }
                   </div>
                 </Grid2Col> 
-
+                <Spacer/>
           </PageInner>
           </BgWrap>
           <Spacer/>
-          <PageInner><Spacer/>
-          <center><BtnPrimary to='/projets'><FormattedMessage id="Projets et collaborations"/></BtnPrimary></center>
+          
+        <PageInner>
+        <Grid2ColAsym>
+          <div>
+                <PageTitle as="h2" centered >actu</PageTitle> 
+                { _map(data.news.nodes, (lastnews, i) => (
+                  
+                <News key={i}>
+                  <NewsItemDate>
+                    <Icon title="Date" icon="ant-design:calendar-twotone" style={{color: colors.dark, fontSize: '20px'}} />
+                    <FormatDate date={lastnews.meta.createdAt}/>
+                  </NewsItemDate>
+                  <h2><Link to={`/actualites/${lastnews.slug}/`} title={lastnews.titre}>{lastnews.titre}</Link></h2>
+                  <NewsItemImage image={lastnews.image.gatsbyImageData} alt={lastnews.titre}/>
+                  <Legende>{lastnews.image.title}</Legende>
+                  <Text dangerouslySetInnerHTML={{ __html: lastnews.teaser}}/>
+                  <BtnPrimary to={`/actualites/${lastnews.slug}/`}><FormattedMessage id="lire la suite"/></BtnPrimary>
+
+       
+                 
           <Spacer/>
-            <GridProjets>
-              { _map(data.projets.nodes, (item, i) => (
-                    <VignetteProjetPerso key={i} item={item} format="mini"/>
-              ))}
-            </GridProjets>
+                </News>
+
+                  )
+                )}
+
+          </div>
+          <div> 
+                  <PageTitle centered  dangerouslySetInnerHTML={{ __html: titreDeLaSectionAgenda }}/>
+                  <AgendaListWrapper>
+                  { _map(nodes.slice(0,6), (item, i) => (
+                    (new Date(item.dateEvent) >= new Date()) && 
+                      <AgendaItemShort key={i} item={item} path="projets/"/>
+                  
+                  ))}
+                  </AgendaListWrapper> 
+                  <BtnPrimary to={`/agenda`}><FormattedMessage id="btn__toutes les dates"/></BtnPrimary>
+                 
+            </div>
+           
+          </Grid2ColAsym>
+         
+          <Spacer/>
+          <PageTitle as="h2" centered >projets</PageTitle> 
+          <Spacer/>
           </PageInner>
+          
+          <BgWrap color={colors.blueLight}>
+            <PageInner>
+              <GridProjets>
+                { _map(data.projets.nodes, (item, i) => (
+                      <VignetteProjetPerso key={i} item={item} format="mini" path="/projets/" />
+                ))}
+              </GridProjets>
+              <BtnPrimary to='/projets'><FormattedMessage id="Projets et collaborations"/></BtnPrimary>
+            </PageInner>
+          </BgWrap>
+         
           <Spacer/>
        {/*   <BgWrap color={colors.blueLight}>
         

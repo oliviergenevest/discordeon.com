@@ -14,7 +14,7 @@ const ItemWrapper = styled(Link)`
   flex-direction:column;
   max-width: 550px;
   margin-bottom:1rem;
-  background:white;
+  background-color:${props => (props.backgroundColor  ? props.backgroundColor : 'inherit' )};
   align-self: stretch;
   justify-content: flex-start;
   align-items:${props => (props.format === 'short'  ? 'flex-start' : 'center' )};;
@@ -58,7 +58,7 @@ const VignetteTeaser =   styled(Text)`
 // - full : avec affichage du teaser sous le nom du projet au dessus de l'image
 // - short : sans teaser, nom sous l'image
 
-const VignetteProjetPerso = ({item, format, path=''}) => {
+const VignetteProjetPerso = ({item, format, path='/projets/'}) => {
     
   return (
         <ItemWrapper to={path+item.slug} format= {format}>
