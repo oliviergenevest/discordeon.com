@@ -18,8 +18,6 @@ import Modals from '../modals';*/
 /*import CookieConsent from 'react-cookie-consent';*/
 import { FormattedMessage} from 'react-intl';
 
-import Splash from '../components/Splash';
-import {Text} from '../components/Elements'
 const messages = { en, fr };
 
 

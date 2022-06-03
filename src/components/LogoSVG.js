@@ -1,6 +1,4 @@
 import React from 'react'
-import { Link } from 'gatsby'
-
  
 const LogoSVG = () => (
 <svg id="logo" width="302" height="65" viewBox="0 0 302 65" fill="none" xmlns="http://www.w3.org/2000/svg">

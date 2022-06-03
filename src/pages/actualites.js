@@ -170,7 +170,7 @@ const NewsPage = ({ data }) => {
                   </NewsItemDate>
                   <h2>{item.titre}</h2>
                   <Text dangerouslySetInnerHTML={{ __html: item.teaser }}/>
-                  <StyledBtnPrimary to={`/actualites/${item.slug}/`}><FormattedMessage id="more"/></StyledBtnPrimary>
+                 {/* <StyledBtnPrimary to={`/actualites/${item.slug}/`}><FormattedMessage id="more"/></StyledBtnPrimary>*/} 
                 </NewsItemContent>
      
 

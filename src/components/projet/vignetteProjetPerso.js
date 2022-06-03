@@ -8,6 +8,21 @@ import {
     Text,
   } from "../Elements"
 
+
+  
+const VignetteImage =   styled(GatsbyImage)`
+  display:flex;
+  ${mq.mobile`
+  margin-left:0;
+  `}
+  flex-direction:row;
+  height:auto;
+  border-radius:4px ;
+  ${mq.mobile`
+    height:auto;
+  `}
+`
+
 const ItemWrapper = styled(Link)`
   display:flex;
   position: relative;
@@ -23,6 +38,10 @@ const ItemWrapper = styled(Link)`
   ${mq.mobile`
     width: 100%;
   `}
+  &:hover ${VignetteImage} {
+    transform:scale(1.2);
+    transition:.3s transform ease-in-out;
+  }
 `
 const VignetteNom =   styled.h2`
   ${font.h3}  
@@ -37,18 +56,6 @@ padding-left:.5rem;
 font-size:1.4rem;
 `
 
-const VignetteImage =   styled(GatsbyImage)`
-  display:flex;
-  ${mq.mobile`
-  margin-left:0;
-  `}
-  flex-direction:row;
-  height:auto;
-  border-radius:4px ;
-  ${mq.mobile`
-    height:auto;
-  `}
-`
 const VignetteTeaser =   styled(Text)`
   text-align:center;
   line-height: 22px;
@@ -59,16 +66,15 @@ const VignetteTeaser =   styled(Text)`
 // - short : sans teaser, nom sous l'image
 
 const VignetteProjetPerso = ({item, format, path='/projets/'}) => {
-    
+    console.log(item.imagePrincipale.gatsbyImageData)
+    console.log(item.nom)
+    console.log("----")
   return (
         <ItemWrapper to={path+item.slug} format= {format}>
-         
-          
-          <VignetteImage image={item.imagePrincipale.gatsbyImageData} alt={item.nom}/>
+         <VignetteImage image={item.imagePrincipale.gatsbyImageData} alt={item.nom}/>  
           {format === "short" && <VignetteNom>{item.nom}</VignetteNom>}
           {format === "mini" && <VignetteNomSmall>{item.nom}</VignetteNomSmall>}
           {format === "full" && <div style={{padding:".5rem 1rem 1rem 1rem"}}><VignetteNom center>{item.nom}</VignetteNom><VignetteTeaser>{item.teaser}</VignetteTeaser></div>}
-
         </ItemWrapper>
     )
 }

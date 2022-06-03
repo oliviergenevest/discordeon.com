@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import _map from "lodash/map"
-import Img from "gatsby-image"
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { mq } from '../consts/style';
 import Background from "../images/background-logo.svg"
 
@@ -39,7 +39,7 @@ const Foret = styled.div`
   `}
 `
 
-const Logo = styled(Img)`
+const Logo = styled(GatsbyImage)`
   filter: grayscale(100%);
   transition: filter .2s ease-in;
   &:hover {
@@ -56,7 +56,7 @@ const LogosPartenaires = ({ data }) => {
         <Logos>
           {_map(data, (partenaire, i) => (
             <a target="_blank" rel="noreferrer" title={partenaire.lien} key={i} href={partenaire.lien}>
-              <Logo fixed={partenaire.logo.fixed} alt="logo"/>
+              <Logo image={partenaire.logo.gatsbyImageData} alt="logo"/>
             </a>
           ))}
         </Logos>

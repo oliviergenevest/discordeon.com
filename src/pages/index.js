@@ -316,7 +316,7 @@ const IndexPage = ({ data, pageContext }) => {
                       <VignetteProjetPerso key={i} item={item} format="mini" path="/projets/" />
                 ))}
               </GridProjets>
-              <BtnPrimary to='/projets'><FormattedMessage id="Projets et collaborations"/></BtnPrimary>
+              <BtnPrimary to='/projets'><FormattedMessage id="btn__projets et collaborations"/></BtnPrimary>
             </PageInner>
           </BgWrap>
          
