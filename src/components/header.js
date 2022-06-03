@@ -240,7 +240,7 @@ const ItemMobileNav = styled(animated.div)`
   font-size:3rem;
   padding:.5rem;
   margin-bottom:.5rem;
- a {color:white;}
+ a {color:white; font-size:2.4rem;}
   
 `
 /*
