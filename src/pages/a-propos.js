@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react';
 import { graphql } from 'gatsby';
-
-import styled from 'styled-components';
+/*
+import styled from 'styled-components';*/
 import { GatsbyImage } from 'gatsby-plugin-image';
-
+/*
 import ModalWindow from '../components/modal/modal-window'
-import { useModalWithData } from '../hooks/modal-hook'
+import { useModalWithData } from '../hooks/modal-hook'*/
 import Seo from '../components/Seo';
-import Boop from '../components/boop';
-import { mq, colors, font } from '../consts/style';
+/*import Boop from '../components/boop';*/
+/*import { mq, colors, font } from '../consts/style';*/
 
 import {
   PageWrapper,
@@ -58,7 +58,7 @@ export const aProposPageQuery = graphql`
 const AProposPage = ({data}) => {
   
  
-  const {  titre, aPropos,illustration,biographie, photoBiographie, seoMetaTags } = data.page;
+  const {  titre, aPropos/*,illustration*/,biographie, photoBiographie, seoMetaTags } = data.page;
 
   return (
     <Fragment>

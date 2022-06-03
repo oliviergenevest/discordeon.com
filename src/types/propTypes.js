@@ -21,5 +21,4 @@ export const layoutTypes = {
 
 export const headerTypes = {
   location: PropTypes.object.isRequired,
-
 };

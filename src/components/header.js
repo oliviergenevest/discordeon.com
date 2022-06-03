@@ -2,10 +2,10 @@ import React, {  useState } from 'react';
 import styled from 'styled-components';
 import { FormattedMessage} from 'react-intl';
 import Link from './ExtendedLink';
-import { colors, font,  boxShadow, mq , space} from '../consts/style';
-import  BtnPrimary from './buttons/ButtonRounded';
-import  { LanguageSwitcher }  from './language-switcher';
-import {  Flex } from './Elements';
+import { colors, font,  boxShadow, mq /*, space*/} from '../consts/style';
+/*import  BtnPrimary from './buttons/ButtonRounded';
+import  { LanguageSwitcher }  from './language-switcher';*/
+/*import {  Flex } from './Elements';*/
 import { headerTypes } from '../types/propTypes';
 import { MenuAltRight } from '@styled-icons/boxicons-regular';
 import { XCircle } from '@styled-icons/bootstrap';
@@ -14,7 +14,7 @@ import instagramIcon from '@iconify/icons-brandico/instagram';
 import { Icon } from '@iconify/react';
 import facebookRect from '@iconify/icons-brandico/facebook-rect';
 import LogoSVG from './LogoSVG'
-import Boop from './boop';
+/*import Boop from './boop';*/
 import backgroundImage from "../images/header-background.jpg"
 
 
@@ -47,7 +47,7 @@ const Wrapper = styled.div`
 `;
 
 
-
+/*
 const LanguageSwitcherWrap = styled.div`
   position:absolute;
   right: 0;
@@ -58,7 +58,7 @@ const LanguageSwitcherWrap = styled.div`
     display:none;
    `}
 
-`;
+`;*/
 
 const HeaderInner = styled.div`
   display: flex;
@@ -243,7 +243,7 @@ const ItemMobileNav = styled(animated.div)`
  a {color:white;}
   
 `
-
+/*
 const FlexBtnWrapper = styled(Flex)`
   margin-top:2rem;  
   margin-bottom:3rem;
@@ -256,7 +256,7 @@ const FlexBtnWrapper = styled(Flex)`
       margin-top:1rem;
   margin-bottom:1rem;
       `}
-`
+`*/
 
 
 

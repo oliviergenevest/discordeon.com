@@ -12,6 +12,8 @@ import {
   
 const VignetteImage =   styled(GatsbyImage)`
   display:flex;
+  position:relative;
+  overflow:hidden;
   ${mq.mobile`
   margin-left:0;
   `}
@@ -38,8 +40,11 @@ const ItemWrapper = styled(Link)`
   ${mq.mobile`
     width: 100%;
   `}
-  &:hover ${VignetteImage} {
-    transform:scale(1.2);
+  &:hover img:not(:first-child) {
+    transform:scale(1.1);
+    transition:.3s transform ease-in-out;
+  }
+  & img:not(:first-child) {
     transition:.3s transform ease-in-out;
   }
 `

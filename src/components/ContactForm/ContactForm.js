@@ -1,5 +1,5 @@
 import React from 'react'
-import {Legende, Spacer, Text, Flex} from '../Elements'
+import {Legende, Spacer, Flex} from '../Elements'
 import styled from 'styled-components';
 import { colors } from '../../consts/style';
 import  BtnPrimary from '../buttons/ButtonRounded';

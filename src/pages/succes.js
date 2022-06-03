@@ -1,14 +1,14 @@
 import React, { Fragment } from "react"
-import { colors } from "../consts/style"
+/*import { colors } from "../consts/style"*/
 
-import BtnPrimary from "../components/buttons/ButtonRounded"
+/*import BtnPrimary from "../components/buttons/ButtonRounded"*/
 import { FormattedMessage} from 'react-intl';
 import {
   PageWrapper,
   PageInner,
   PageTitle,
-  SectionTitle,
-  Text,
+ /* SectionTitle,*/
+ /* Text,*/
   FocusText,
  
 } from "../components/Elements"

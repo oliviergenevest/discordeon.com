@@ -8,7 +8,8 @@ const PlayerZik = ({urlPlayer, type, ...props}) => {
 switch (type) {
     case 'soundcloud' : 
       return <iframe 
-        title="soundcloud"
+      title="Player Soundcloud"
+      
         width="100%" 
         height="300" 
         scrolling="no" 
@@ -18,6 +19,7 @@ switch (type) {
         </iframe>;
     case 'bandcamp' : 
       return <iframe 
+      title="Player Bandcamp"
       width="100%" 
       height="300" 
         frameBorder="no" 

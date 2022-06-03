@@ -4,11 +4,11 @@ import Link from '../components/ExtendedLink';
 import _map from 'lodash/map';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import Seo from '../components/Seo';
-import  BtnPrimary  from '../components/buttons/ButtonRounded';
+/*import  BtnPrimary  from '../components/buttons/ButtonRounded';*/
 import styled from 'styled-components';
 import { mq, colors, font } from '../consts/style'; 
 import { Icon } from '@iconify/react';
-import { FormattedMessage} from 'react-intl';
+/*import { FormattedMessage} from 'react-intl';*/
 import FormatDate  from '../components/formatDate'
 
 
@@ -103,11 +103,11 @@ const NewsItemContent =   styled.div`
   }
  
 `
-
+/*
 const StyledBtnPrimary = styled(BtnPrimary)`
   margin-top:1.2rem;
   display:none;
-`
+`*/
 
 
 

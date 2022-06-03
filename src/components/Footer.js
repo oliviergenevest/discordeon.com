@@ -1,10 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Link from './ExtendedLink';
-import {Link as GLink} from 'gatsby';
-import { useIntl } from 'react-intl';
+
 import { colors, mq, space, font } from '../consts/style';
-import { Text,  Flex } from './Elements';
+import {   Flex } from './Elements';
 import { Icon } from '@iconify/react';
 /*import instagramIcon from '@iconify/icons-logos/instagram-icon';*/
 import instagramIcon from '@iconify/icons-brandico/instagram';
@@ -19,51 +18,6 @@ export const WrapperFooter = styled.div`
   align-items: center;
   position:relative;
  
-`;
-
-const FooterInner = styled.div`
- padding: 0 2rem;
- display:block;
- width: 100%;
- text-align:center;
-
- ${mq.tabletSmall_up`
-   text-align:left;
-  display: flex;
-  width: 120rem;
-  max-width: 100%;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  gap:2rem;
-  `}
- 
- ${mq.tablet_up`
-  img {
-    display:block;
-  }
-  `}
-  
-  ul {
-    list-style: circle;
-    margin-right:2rem;
-    ${mq.tabletSmall`
-            margin-right:0;
-            list-style: none;
-          `}
-    padding:0;
-      li {
-         display:inline-block;
-         padding:.5rem;
-        ${mq.tabletSmall_up`
-            display:block;
-             padding:0;
-          `}
-      a {
-        color:${colors.dark};
-      }
-  }
-
 `;
 
 
@@ -111,7 +65,7 @@ const IconLink = ({to, icon, text}) => {
 }
 
 const Footer= ({ location }) => {
-  const intl = useIntl();
+
   const today = new Date();
   const year = today.getFullYear();
 

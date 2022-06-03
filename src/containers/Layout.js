@@ -1,7 +1,7 @@
 /* TODO : ajouter composant SEO avec les valeurs du site global */
 
 import React from 'react';
-import Link from '../components/ExtendedLink';
+/*import Link from '../components/ExtendedLink';*/
 import {IntlProvider} from 'react-intl'
 // Messages
 import en from '../translations/en.json';
@@ -10,13 +10,13 @@ import Headroom from 'react-headroom';
 import styled from 'styled-components';
 import Header from '../components/header';
 import Footer from '../components/Footer';
-
+import { layoutTypes } from '../types/propTypes';
 import Reboot from '../style/reboot';
 import Global from '../style/global';
 /*import ModalContext from '../store/modalContext';
 import Modals from '../modals';*/
 /*import CookieConsent from 'react-cookie-consent';*/
-import { FormattedMessage} from 'react-intl';
+/*import { FormattedMessage} from 'react-intl';*/
 
 const messages = { en, fr };
 
@@ -63,5 +63,8 @@ const Layout = ({ children, pageContext, location }) => {
    
   );
 };
+
+
+Layout.propTypes = layoutTypes;
 
 export default Layout;

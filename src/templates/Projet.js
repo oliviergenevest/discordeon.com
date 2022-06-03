@@ -5,7 +5,7 @@ import _map from 'lodash/map';
 import  BtnPrimary  from '../components/buttons/ButtonRounded';
 import { PageWrapper, PageInner, BgWrap, PageTitle, Title,Spacer,Flex, FocusText,Text } from '../components/Elements';
 import { colors } from '../consts/style';
-import { projetTypes } from '../types/propTypes';
+
 import Seo from '../components/Seo';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import {StructuredText} from "react-datocms";
@@ -89,7 +89,6 @@ const Projet = ({ data, pageContext, location }) => {
          
           <Title maxWidth centered>{nom}</Title>
           <FocusText centered dangerouslySetInnerHTML={{ __html:teaser }} />
-          
           <GatsbyImage image={imagePrincipale.gatsbyImageData} alt={nom}  style={{marginBottom:"1rem",width:"100%"}}/>
 
           
@@ -100,14 +99,14 @@ const Projet = ({ data, pageContext, location }) => {
                 return <Block>
                         <PlayerZik type={record.typeDeLecteur} urlPlayer={record.urlPlayer}/>
                         </Block>           
-             }
+              }
               if (record.__typename === "DatoCmsImage") {
-                 return  <Block>
+                 return <Block>
                           <GatsbyImage image={record.image.gatsbyImageData} alt={record.image.title}/>
                         </Block>
               }
               if (record.__typename === "DatoCmsVideo") {
-                return  <Block>
+                return <Block>
                           <Video
                             videoSrcURL={record.video.url}
                             videoTitle={record.video.title}
@@ -116,13 +115,13 @@ const Projet = ({ data, pageContext, location }) => {
               }
 
               if (record.__typename === "DatoCmsGallerieImage") {
-                return  <Block>
-                          <GalleryLightbox images={record.images} />
-                        </Block>
+                return <Block> 
+                <GalleryLightbox images={record.images} />
+              </Block>
               }
               if (record.__typename === "DatoCmsTexte") {
-              return  <Text dangerouslySetInnerHTML={{ __html:record.texte }}/>
-           }
+                return  <Text dangerouslySetInnerHTML={{ __html:record.texte }}/>
+              }
 
               return (
                 <>
@@ -338,6 +337,6 @@ export const projectQuery = graphql`
   }
 `;
 
-Projet.propTypes = projetTypes;
+
 
 export default Projet;
