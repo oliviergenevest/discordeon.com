@@ -1,7 +1,7 @@
 import React from 'react'
 import {Legende, Spacer, Flex} from '../Elements'
 import styled from 'styled-components';
-import { colors } from '../../consts/style';
+import { colors, mq } from '../../consts/style';
 import  BtnPrimary from '../buttons/ButtonRounded';
 import { FormattedMessage} from 'react-intl';
 const Form = styled.form`
@@ -36,6 +36,11 @@ const StyledFlex = styled(Flex)`
 	gap:1rem;
 	flex-direction:row;
 	margin-bottom:1rem;
+	flex-wrap:nowrap;
+	${mq.tablet`
+	display:flex;
+	flex-wrap:nowrap;
+	`}
 `;
 
 const ContactForm = ({invisible=false}) => 

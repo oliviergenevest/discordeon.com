@@ -17,6 +17,7 @@ export const WrapperFooter = styled.div`
   justify-content: center;
   align-items: center;
   position:relative;
+  margin-bottom:4rem;
  
 `;
 

@@ -28,6 +28,7 @@ const ItemWrapperShort = styled.div`
     height:1px;
     background-color:${colors.yellow};
   }
+  a:hover {text-decoration:underline;font-weight:500;}
 `
 const AgendaItemProjetShort =   styled(Link)`
   display:block;

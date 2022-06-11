@@ -58,7 +58,7 @@ const NewsItem =  styled(Link)`
   }
 
   background-color:${colors.greenLight};
-  &:nth-child(even) {     background-color:${colors.blueLight};}
+  &:nth-child(odd) {     background-color:white;}
 `
 
 const NewsItemImage =   styled(GatsbyImage)`  

@@ -36,14 +36,19 @@ export const Banner = styled.div`
 export const BgWrap = styled.div`
   position:relative;
   background:${props => props.color ? props.color : '#E8E7E7' };
-  width: calc(100% + 4rem);
+  width: calc(100% + 8rem);
   /*overflow: hidden;*/
   flex-direction: column;
   align-items: center;
-  padding:2rem 2rem 2rem 2rem;
+  padding:4rem;
   margin: 0;
   margin-left:-2rem;
   margin-right:-2rem;
+  ${mq.tablet`
+  width: calc(100% + 4rem);
+  padding:2rem;
+  `}
+
   /* bottom curved prop */
   & :after { 
     content: "";
@@ -261,14 +266,6 @@ export const LinkToGoogleMap = styled.a`
 `;
 
 
-export const EquipeMembreTitle = styled.h2
-`
-  position:relative;
-  margin-top:1.5rem;
- 
-  ${font.styleEquipeMembreTitle}  
- 
-`;
 
 
 export const GroupesWrapper = styled.div`

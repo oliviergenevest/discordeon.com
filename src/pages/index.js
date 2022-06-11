@@ -156,7 +156,7 @@ const NewsItemImage =   styled(GatsbyImage)`
   min-width:340px;
   border-radius:4px;
   margin-bottom:0;
-  margin-top:1rem;
+ 
   ${mq.tabletSmall`
    height:100%;
    width:100%;
@@ -270,13 +270,14 @@ const IndexPage = ({ data, pageContext }) => {
                 { _map(data.news.nodes, (lastnews, i) => (
                   
                 <News key={i}>
+                  <NewsItemImage image={lastnews.image.gatsbyImageData} alt={lastnews.titre}/>
+                  <Legende>{lastnews.image.title}</Legende>
                   <NewsItemDate>
                     <Icon title="Date" icon="ant-design:calendar-twotone" style={{color: colors.dark, fontSize: '20px'}} />
                     <FormatDate date={lastnews.meta.createdAt}/>
                   </NewsItemDate>
                   <h2><Link to={`/actualites/${lastnews.slug}/`} title={lastnews.titre}>{lastnews.titre}</Link></h2>
-                  <NewsItemImage image={lastnews.image.gatsbyImageData} alt={lastnews.titre}/>
-                  <Legende>{lastnews.image.title}</Legende>
+                  
                   <Text dangerouslySetInnerHTML={{ __html: lastnews.teaser}}/>
                   <BtnPrimary to={`/actualites/${lastnews.slug}/`}><FormattedMessage id="lire la suite"/></BtnPrimary>
 
@@ -304,13 +305,15 @@ const IndexPage = ({ data, pageContext }) => {
            
           </Grid2ColAsym>
          
-          <Spacer/>
-          <PageTitle as="h2" centered >projets</PageTitle> 
-          <Spacer/>
+         
           </PageInner>
           
           <BgWrap color={colors.blueLight}>
+          
+          
+          
             <PageInner>
+            <PageTitle as="h2" centered >projets</PageTitle> 
               <GridProjets>
                 { _map(data.projets.nodes, (item, i) => (
                       <VignetteProjetPerso key={i} item={item} format="mini" path="/projets/" />
