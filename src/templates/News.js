@@ -31,6 +31,13 @@ const PageInnerNews = styled.div`
   `}
 `
 
+const Image = styled(GatsbyImage)`
+ max-height:450px;
+ ${mq.tablet`
+ max-height:100%;
+ `}
+`
+
 const LeftContainer = styled.div`
   background: #EBEBF3;
   padding: 2.5rem;
@@ -73,12 +80,12 @@ const News = ({ data, pageContext, location }) => {
           <Title maxWidth centered>{titre}</Title>
           <Spacer /> 
           <div style={{textAlign:"center"}}>
-            <GatsbyImage image={image.gatsbyImageData} alt={titre} />
+            <Image image={image.gatsbyImageData} alt={titre} />
             <Legende>{image.title}</Legende>
           </div>
         </PageInner>
         <PageInner>
-        <Spacer /> 
+      
         <PageInnerNews>
           <LeftContainer>
                   <NewsItemDate>
