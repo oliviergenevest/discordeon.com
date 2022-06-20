@@ -76,7 +76,7 @@ export const PageWrapper = styled.div`
   color: ${colors.dark};
 
   & ${BgWrap} {
-    margin-top:-2rem!important;
+    margin-top:2rem;
   }
 
   ${mq.tablet`

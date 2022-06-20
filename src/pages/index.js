@@ -222,7 +222,12 @@ const IndexPage = ({ data, pageContext }) => {
     seoMetaTags
   } = data.datoCmsAccueilPage;
   const { nodes } = data.agenda; // toutes les dates
- // console.log(data.projets.nodes);
+  
+  //gestion agenda 
+  var nbDates = 0 ;
+  const dateDuJour = new Date();
+  dateDuJour.setHours(0, 0, 0, 0);
+
   return (
     <Fragment>
       <Seo meta={seoMetaTags} />
@@ -293,11 +298,19 @@ const IndexPage = ({ data, pageContext }) => {
           <div> 
                   <PageTitle centered  dangerouslySetInnerHTML={{ __html: titreDeLaSectionAgenda }}/>
                   <AgendaListWrapper>
-                  { _map(nodes.slice(0,6), (item, i) => (
-                    (new Date(item.dateEvent) >= new Date()) && 
-                      <AgendaItemShort key={i} item={item} path="projets/"/>
+
+                  { _map(nodes, (item, i) => {
                   
-                  ))}
+                    
+                   
+                    (new Date(item.dateEvent) >= dateDuJour) && nbDates++
+                    return ( 
+                      (new Date(item.dateEvent) >= dateDuJour && nbDates <= 5) && 
+                        <AgendaItemShort key={i} item={item} path="projets/"/>
+                    )             
+                    }
+                  )}
+
                   </AgendaListWrapper> 
                   <BtnPrimary to={`/agenda`}><FormattedMessage id="btn__toutes les dates"/></BtnPrimary>
                  
@@ -311,7 +324,7 @@ const IndexPage = ({ data, pageContext }) => {
           <BgWrap color={colors.blueLight}>
           
           
-          
+           
             <PageInner>
             <PageTitle as="h2" centered >projets</PageTitle> 
               <GridProjets>
@@ -324,23 +337,7 @@ const IndexPage = ({ data, pageContext }) => {
           </BgWrap>
          
           <Spacer/>
-       {/*   <BgWrap color={colors.blueLight}>
-        
-          
-           <Spacer/>
-            <PageInner>
-              <SectionTitle centered  dangerouslySetInnerHTML={{ __html: titreDeLaSectionAgenda }}/>
-              <AgendaListWrapper>
-              { _map(nodes.slice(0,6), (item, i) => (
-                (new Date(item.dateEvent) >= new Date()) && 
-                  <AgendaItem key={i} item={item}/>
-              
-              ))}
-              </AgendaListWrapper> 
-              <BtnPrimary to={`/agenda`}><FormattedMessage id="btn__toutes les dates"/></BtnPrimary>
-
-            </PageInner>
-          </BgWrap>*/}
+      
          
 
       </PageWrapper>

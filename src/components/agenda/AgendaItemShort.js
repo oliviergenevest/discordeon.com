@@ -75,8 +75,7 @@ const AgendaItemShort = ({item}) => {
         <ItemWrapperShort>
           <div>
             <AgendaItemDateShort>{format(new Date(item.dateEvent), 'dd LLL', {locale: fr}) } </AgendaItemDateShort>
-            <AgendaItemProjetShort to={'/projets/'+item.projet.slug}>{item.projet.nom}</AgendaItemProjetShort>
-          </div>
+            {item.projet ? <AgendaItemProjetShort to={'/projets/'+item.projet.slug}>{item.projet.nom}</AgendaItemProjetShort> : <AgendaItemProjetShort></AgendaItemProjetShort>}          </div>
           <AgendaItemContentShort>
            {/*  <Text dangerouslySetInnerHTML={{ __html: item.titre }}/>*/}
             <Text dangerouslySetInnerHTML={{ __html: item.details }}/>

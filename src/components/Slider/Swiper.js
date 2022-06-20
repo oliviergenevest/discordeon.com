@@ -11,8 +11,8 @@ const Swiperdemo = () => {
       slidesPerView={2}
      
    
-      onSlideChange={() => console.log('slide change')}
-      onSwiper={(swiper) => console.log(swiper)}
+     /* onSlideChange={() => console.log('slide change')}
+      onSwiper={(swiper) => console.log(swiper)}*/
     >
       <SwiperSlide style={{"background":"red"}}>Slide 1</SwiperSlide>
       <SwiperSlide>Slide 2</SwiperSlide>

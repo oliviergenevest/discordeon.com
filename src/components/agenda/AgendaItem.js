@@ -84,8 +84,9 @@ const AgendaItem = ({item}) => {
  
     return (
         <ItemWrapper>
+       
             <AgendaItemDate>{format(new Date(item.dateEvent), 'dd LLL', {locale: fr}) } <span>{format(new Date(item.dateEvent), 'yyyy', {locale: fr}) }</span></AgendaItemDate>
-            <AgendaItemProjet to={'/projets/'+item.projet.slug}>{item.projet.nom}</AgendaItemProjet>
+            {item.projet ? <AgendaItemProjet to={'/projets/'+item.projet.slug}>{item.projet.nom}</AgendaItemProjet> : <AgendaItemProjet></AgendaItemProjet>}
             <AgendaItemContent>
                 <Text dangerouslySetInnerHTML={{ __html: item.titre }}/>
                 <Text dangerouslySetInnerHTML={{ __html: item.details }}/>

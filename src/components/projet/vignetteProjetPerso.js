@@ -71,9 +71,9 @@ const VignetteTeaser =   styled(Text)`
 // - short : sans teaser, nom sous l'image
 
 const VignetteProjetPerso = ({item, format, path='/projets/'}) => {
-    console.log(item.imagePrincipale.gatsbyImageData)
+  /*  console.log(item.imagePrincipale.gatsbyImageData)
     console.log(item.nom)
-    console.log("----")
+    console.log("----")*/
   return (
         <ItemWrapper to={path+item.slug} format= {format}>
          <VignetteImage image={item.imagePrincipale.gatsbyImageData} alt={item.nom}/>  

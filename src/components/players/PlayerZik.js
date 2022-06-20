@@ -4,7 +4,7 @@ import React from 'react';
 
 
 const PlayerZik = ({urlPlayer, type, ...props}) => {
-    console.log(urlPlayer)
+    //console.log(urlPlayer)
 switch (type) {
     case 'soundcloud' : 
       return <iframe 

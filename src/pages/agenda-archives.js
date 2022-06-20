@@ -32,8 +32,8 @@ const StyledBtnPrimary = styled(BtnPrimary)`
 
 
 export const agendaQuery = graphql`
-  query  agendaPageQuery($locale: String) {
-    page: datoCmsAgendaPage(locale: {eq: $locale}) {
+  query  agendaArchivesPageQuery($locale: String) {
+    page: datoCmsAgendaArchivesPage(locale: {eq: $locale}) {
       titre
       contenu
       seoMetaTags {
@@ -41,7 +41,7 @@ export const agendaQuery = graphql`
       }
     }
 
-    agenda: allDatoCmsAgenda(filter: {locale: {eq: $locale}}, sort: {order: ASC, fields: dateEvent}){
+    agenda: allDatoCmsAgenda(filter: {locale: {eq: $locale}}, sort: {order: DESC, fields: dateEvent}){
       nodes {
         id
         meta {
@@ -60,11 +60,11 @@ export const agendaQuery = graphql`
 `;
 
 
-const AgendaPage = ({ data }) => {
+const AgendaArchivesPage = ({ data }) => {
 
   const { titre, contenu, seoMetaTags } = data.page;
   const { nodes } = data.agenda; // toutes les dates
-
+    
   const dateDuJour = new Date();
   dateDuJour.setHours(0, 0, 0, 0);
 
@@ -77,14 +77,11 @@ const AgendaPage = ({ data }) => {
           <FocusText dangerouslySetInnerHTML={{ __html: contenu }}/>
           <AgendaListWrapper>
             { _map(nodes, (item, i) => (
-               (new Date(item.dateEvent) >= dateDuJour) && 
+            (new Date(item.dateEvent) <= dateDuJour) &&
                  <AgendaItem key={i} item={item}/>
             
-            ))}
-           
+            ))}   
           </AgendaListWrapper>
-          <Spacer/>
-          <StyledBtnPrimary to="/agenda-archives">Dates archivées</StyledBtnPrimary>
         </PageInner>
         <Spacer/>
       </PageWrapper>
@@ -92,4 +89,4 @@ const AgendaPage = ({ data }) => {
   );
 }
 
-export default AgendaPage;
+export default AgendaArchivesPage;
