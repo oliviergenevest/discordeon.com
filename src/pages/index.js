@@ -230,7 +230,6 @@ const IndexPage = ({ data, pageContext }) => {
   function dateFuture(itemAgenda) {
     (new Date(itemAgenda.dateEvent) >= dateDuJour) && nbDates++
      return (new Date(itemAgenda.dateEvent) >= dateDuJour ) && (nbDates <= 6) ? itemAgenda : null;
-    
   }
   var dateFutures = nodes.filter(dateFuture);
 

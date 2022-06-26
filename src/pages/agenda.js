@@ -67,7 +67,11 @@ const AgendaPage = ({ data }) => {
 
   const dateDuJour = new Date();
   dateDuJour.setHours(0, 0, 0, 0);
-
+  function dateFuture(itemAgenda) {
+    return (new Date(itemAgenda.dateEvent) >= dateDuJour ) ? itemAgenda : null;
+  }
+  var dateFutures = nodes.filter(dateFuture);
+  
   return (
     <Fragment>
       <Seo meta={seoMetaTags} />
@@ -76,12 +80,9 @@ const AgendaPage = ({ data }) => {
           <PageTitle centered maxWidth dangerouslySetInnerHTML={{ __html: titre }}/>
           <FocusText dangerouslySetInnerHTML={{ __html: contenu }}/>
           <AgendaListWrapper>
-            { _map(nodes, (item, i) => (
-               (new Date(item.dateEvent) >= dateDuJour) && 
-                 <AgendaItem key={i} item={item}/>
-            
+            { _map(dateFutures, (item, i) => (
+                <AgendaItem key={i} item={item}/>
             ))}
-           
           </AgendaListWrapper>
           <Spacer/>
           <StyledBtnPrimary to="/agenda-archives">Dates archivées</StyledBtnPrimary>
