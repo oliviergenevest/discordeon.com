@@ -227,6 +227,12 @@ const IndexPage = ({ data, pageContext }) => {
   var nbDates = 0 ;
   const dateDuJour = new Date();
   dateDuJour.setHours(0, 0, 0, 0);
+  function dateFuture(itemAgenda) {
+    (new Date(itemAgenda.dateEvent) >= dateDuJour) && nbDates++
+     return (new Date(itemAgenda.dateEvent) >= dateDuJour ) && (nbDates <= 6) ? itemAgenda : null;
+    
+  }
+  var dateFutures = nodes.filter(dateFuture);
 
   return (
     <Fragment>
@@ -299,13 +305,8 @@ const IndexPage = ({ data, pageContext }) => {
                   <PageTitle centered  dangerouslySetInnerHTML={{ __html: titreDeLaSectionAgenda }}/>
                   <AgendaListWrapper>
 
-                  { _map(nodes, (item, i) => {
-                  
-                    
-                   
-                    (new Date(item.dateEvent) >= dateDuJour) && nbDates++
-                    return ( 
-                      (new Date(item.dateEvent) >= dateDuJour && nbDates <= 5) && 
+                  { _map(dateFutures, (item, i) => {
+                    return (
                         <AgendaItemShort key={i} item={item} path="projets/"/>
                     )             
                     }
