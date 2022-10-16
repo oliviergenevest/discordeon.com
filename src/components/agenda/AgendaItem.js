@@ -81,12 +81,14 @@ const AgendaItemContent =   styled.div`
 
 
 const AgendaItem = ({item}) => {
- 
+ console.log(item.dateFin)
     return (
-        <ItemWrapper>
-       
-            <AgendaItemDate>{format(new Date(item.dateEvent), 'dd LLL', {locale: fr}) } <span>{format(new Date(item.dateEvent), 'yyyy', {locale: fr}) }</span></AgendaItemDate>
-            {item.projet ? <AgendaItemProjet to={'/projets/'+item.projet.slug}>{item.projet.nom}</AgendaItemProjet> : <AgendaItemProjet></AgendaItemProjet>}
+        <ItemWrapper> {item.dateFin ?  <AgendaItemDate>{format(new Date(item.dateEvent), 'dd LLL', {locale: fr}) } <span style={{textTransform:"lowercase", display:"inline-block"}}>au</span> {format(new Date(item.dateFin), 'dd LLL', {locale: fr}) }<span> {format(new Date(item.dateFin), 'yyyy', {locale: fr}) }</span></AgendaItemDate>
+                          : 
+                        <AgendaItemDate>{format(new Date(item.dateEvent), 'dd LLL', {locale: fr}) } <span>{format(new Date(item.dateEvent), 'yyyy', {locale: fr}) }</span></AgendaItemDate>
+          }  
+      
+          {item.projet ? <AgendaItemProjet to={'/projets/'+item.projet.slug}>{item.projet.nom}</AgendaItemProjet> : <AgendaItemProjet></AgendaItemProjet>}
             <AgendaItemContent>
                 <Text dangerouslySetInnerHTML={{ __html: item.titre }}/>
                 <Text dangerouslySetInnerHTML={{ __html: item.details }}/>

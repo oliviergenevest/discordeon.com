@@ -50,6 +50,7 @@ export const agendaQuery = graphql`
         titre
         details
         dateEvent
+        dateFin
         projet {
           nom
           slug

@@ -74,7 +74,11 @@ const AgendaItemShort = ({item}) => {
     return (
         <ItemWrapperShort>
           <div>
-            <AgendaItemDateShort>{format(new Date(item.dateEvent), 'dd LLL', {locale: fr}) } </AgendaItemDateShort>
+          <AgendaItemDateShort>{format(new Date(item.dateEvent), 'dd LLL', {locale: fr}) }
+           {item.dateFin && <span style={{textTransform:"lowercase"}}> au </span>}
+           {item.dateFin && format(new Date(item.dateFin), 'dd LLL', {locale: fr}) }
+           </AgendaItemDateShort>
+                         
             {item.projet ? <AgendaItemProjetShort to={'/projets/'+item.projet.slug}>{item.projet.nom}</AgendaItemProjetShort> : <AgendaItemProjetShort></AgendaItemProjetShort>}          </div>
           <AgendaItemContentShort>
            {/*  <Text dangerouslySetInnerHTML={{ __html: item.titre }}/>*/}

@@ -118,6 +118,7 @@ export const indexQuery = graphql`
         titre
         details
         dateEvent
+        dateFin
         projet {
           nom
           slug
@@ -228,8 +229,8 @@ const IndexPage = ({ data, pageContext }) => {
   const dateDuJour = new Date();
   dateDuJour.setHours(0, 0, 0, 0);
   function dateFuture(itemAgenda) {
-    (new Date(itemAgenda.dateEvent) >= dateDuJour) && nbDates++
-     return (new Date(itemAgenda.dateEvent) >= dateDuJour ) && (nbDates <= 6) ? itemAgenda : null;
+    ((new Date(itemAgenda.dateEvent) >= dateDuJour) || (new Date(itemAgenda.dateFin) >= dateDuJour) ) && nbDates++
+     return ((new Date(itemAgenda.dateEvent) >= dateDuJour) || (new Date(itemAgenda.dateFin) >= dateDuJour) ) && (nbDates <= 6) ? itemAgenda : null;
   }
   var dateFutures = nodes.filter(dateFuture);
 

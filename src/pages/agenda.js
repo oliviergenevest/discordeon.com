@@ -50,6 +50,7 @@ export const agendaQuery = graphql`
         titre
         details
         dateEvent
+        dateFin
         projet {
           nom
           slug
@@ -68,7 +69,7 @@ const AgendaPage = ({ data }) => {
   const dateDuJour = new Date();
   dateDuJour.setHours(0, 0, 0, 0);
   function dateFuture(itemAgenda) {
-    return (new Date(itemAgenda.dateEvent) >= dateDuJour ) ? itemAgenda : null;
+    return ((new Date(itemAgenda.dateEvent) >= dateDuJour) || (new Date(itemAgenda.dateFin) >= dateDuJour) ) ? itemAgenda : null;
   }
   var dateFutures = nodes.filter(dateFuture);
   
