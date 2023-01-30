@@ -81,7 +81,7 @@ const AgendaItemContent =   styled.div`
 
 
 const AgendaItem = ({item}) => {
- console.log(item.dateFin)
+ //console.log(item.dateFin)
     return (
         <ItemWrapper> {item.dateFin ?  <AgendaItemDate>{format(new Date(item.dateEvent), 'dd LLL', {locale: fr}) } <span style={{textTransform:"lowercase", display:"inline-block"}}>au</span> {format(new Date(item.dateFin), 'dd LLL', {locale: fr}) }<span> {format(new Date(item.dateFin), 'yyyy', {locale: fr}) }</span></AgendaItemDate>
                           : 

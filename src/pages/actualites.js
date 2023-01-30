@@ -115,7 +115,7 @@ export const groupesQuery = graphql`
   query  groupesPageQuery($locale: String) {
     page: datoCmsActualitePage(locale: {eq: $locale}) {
       titre
-      contenu
+      contenu 
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags
       }
@@ -149,7 +149,7 @@ const NewsPage = ({ data }) => {
 
   const { titre, contenu, seoMetaTags } = data.page;
   const { nodes } = data.news; // toutes les news
-
+console.log(nodes);
 
   return (
     <Fragment>

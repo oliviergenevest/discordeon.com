@@ -92,7 +92,7 @@ const Projet = ({ data, pageContext, location }) => {
           <GatsbyImage image={imagePrincipale.gatsbyImageData} alt={nom}  style={{marginBottom:"1rem",width:"100%"}}/>
 
           
-          {(description2.blocks.length > 0 ) && <StructuredText
+          {(description2.blocks.length >= 0 ) && <StructuredText
             data={description2}
             renderBlock={({record}) => {
               if (record.__typename === "DatoCmsPlayerZik") {
