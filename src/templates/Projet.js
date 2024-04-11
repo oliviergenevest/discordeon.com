@@ -1,11 +1,11 @@
-import React, { Fragment } from 'react';
+import React, { Fragment , useState} from 'react';
 import {  graphql } from 'gatsby';
 import styled from 'styled-components';
 import _map from 'lodash/map';
 import  BtnPrimary  from '../components/buttons/ButtonRounded';
 import { PageWrapper, PageInner, BgWrap, PageTitle, Title,Spacer,Flex, FocusText,Text } from '../components/Elements';
 import { colors } from '../consts/style';
-
+import { useSpring, animated } from 'react-spring'
 import Seo from '../components/Seo';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import {StructuredText} from "react-datocms";
@@ -24,6 +24,17 @@ const IconLink = ({to, icon, text}) => {
     </LinkSocial>
   )
 };
+
+const EnSavoirPlus = styled(animated.div)`
+  opacity:1;
+  overflow:hidden;
+  padding:0;
+`
+
+
+const StyledBtnPrimary = styled(BtnPrimary)`
+  margin-top:1.2rem;
+`
 
 const LinkSocial = styled.a`
   display:flex;
@@ -76,6 +87,15 @@ const Block = styled.div`
 const Projet = ({ data, pageContext, location }) => {
 
   const {  nom, teaser, description2,  imagePrincipale, contacts, downloadFiles,seoMetaTags} = data.projet;
+  
+  const datesInversees = [...data.dates.nodes].reverse()
+
+  const [datesArchiveesOpen, setDatesArchiveesOpen] = useState(false) // dates archivées (par defaut replié)
+  const divAnimation = useSpring({
+    config: { mass: 1, tension: 210, friction: 20 },
+    native: true,
+    to: { opacity:datesArchiveesOpen ? "1" : "0",padding:datesArchiveesOpen ? "2rem" : "0", height: datesArchiveesOpen ? "100%" : "0", backgroundColor:  datesArchiveesOpen ? '#EBEBF3' : '#fff'},
+    })
 
   return (
     <Fragment>
@@ -184,9 +204,29 @@ const Projet = ({ data, pageContext, location }) => {
                   <AgendaItem key={i} item={item}/>
               ))} 
             </AgendaListWrapper>
+           
           </BgWrap>
         }
-        
+
+<Spacer/>
+           
+       
+            {(data.dates.nodes.length > 0) &&  
+          <BgWrap color={colors.blueLight}>
+            <Text><BtnPrimary as="span" onClick={() =>setDatesArchiveesOpen(!datesArchiveesOpen)}> {datesArchiveesOpen ? 'Masquer' : 'Voir '}  les dates passées</BtnPrimary></Text>  
+         
+            <EnSavoirPlus style={ divAnimation}>
+            <AgendaListWrapper>
+              { _map(datesInversees, (item, i) => (
+                (new Date(item.dateEvent) <= new Date()) && 
+                  <AgendaItem key={i} item={item}/>
+              ))} 
+            </AgendaListWrapper>
+            </EnSavoirPlus>    
+           
+           
+          </BgWrap>
+        }
         </PageInnerProject>
        {/* 
       <PageInnerActivite>
