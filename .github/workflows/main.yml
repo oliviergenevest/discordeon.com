@@ -1,0 +1,14 @@
+name: nightly-netlify-build
+
+on:
+  schedule:
+    - cron: "20 8 * * *"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: trigger netlify build
+        run: |
+          curl -X POST -d '{}' https://api.netlify.com/build_hooks/626815361cd5ea5365be8e86
