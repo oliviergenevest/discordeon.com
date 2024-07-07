@@ -1,0 +1,2 @@
+ # Redirect all traffic from your Netlify subdomain to your primary domain:
+https://discordeon.netlify.app/*   https://discordeon.com/:splat   301!
