@@ -130,7 +130,9 @@ const Projet = ({ data, pageContext, location }) => {
                         </Block>
               }
               if (record.__typename === "DatoCmsBouton") {
-                return <BtnPrimary as="a" href={record.lienDuBouton} external>{record.texteDuBouton}</BtnPrimary>   
+                return <Block>
+                    <BtnPrimary as="a" href={record.lienDuBouton} external>{record.texteDuBouton}</BtnPrimary>  
+                  </Block> 
              }
               if (record.__typename === "DatoCmsVideo") {
                 return <Block>
