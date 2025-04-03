@@ -97,6 +97,8 @@ const Projet = ({ data, pageContext, location }) => {
     to: { opacity:datesArchiveesOpen ? "1" : "0",padding:datesArchiveesOpen ? "2rem" : "0", height: datesArchiveesOpen ? "100%" : "0", backgroundColor:  datesArchiveesOpen ? '#EBEBF3' : '#fff'},
     })
 
+    {console.log("ST blocks",description2)}
+
   return (
     <Fragment>
       <Seo meta={seoMetaTags} />
@@ -111,20 +113,25 @@ const Projet = ({ data, pageContext, location }) => {
           <FocusText centered dangerouslySetInnerHTML={{ __html:teaser }} />
           <GatsbyImage image={imagePrincipale.gatsbyImageData} alt={nom}  style={{marginBottom:"1rem",width:"100%"}}/>
 
-          
+         
           {(description2.blocks.length >= 0 ) && <StructuredText
             data={description2}
             renderBlock={({record}) => {
+              console.log(record)
               if (record.__typename === "DatoCmsPlayerZik") {
                 return <Block>
                         <PlayerZik type={record.typeDeLecteur} urlPlayer={record.urlPlayer}/>
                         </Block>           
               }
+
               if (record.__typename === "DatoCmsImage") {
                  return <Block>
                           <GatsbyImage image={record.image.gatsbyImageData} alt={record.image.title}/>
                         </Block>
               }
+              if (record.__typename === "DatoCmsBouton") {
+                return <BtnPrimary as="a" href={record.lienDuBouton} external>{record.texteDuBouton}</BtnPrimary>   
+             }
               if (record.__typename === "DatoCmsVideo") {
                 return <Block>
                           <Video
@@ -306,6 +313,15 @@ export const projectQuery = graphql`
               )
             }
           }
+          ...on DatoCmsVideo {
+            id: originalId
+            titre
+            video { 
+              url
+              title
+            }
+            
+          }
           ...on DatoCmsTexte {
             id: originalId
             texte
@@ -315,16 +331,14 @@ export const projectQuery = graphql`
             urlPlayer
             typeDeLecteur
           }
-          ...on DatoCmsVideo {
-            id: originalId
-            video {
-                url
-                title
-                providerUid
-                provider
-            }
+        ...on DatoCmsBouton {
+           id: originalId
+          lienDuBouton
+          lienExterne
+          texteDuBouton
           }
         }
+          
       }
       teaser
       imagePrincipale {

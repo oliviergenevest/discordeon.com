@@ -33,8 +33,8 @@ background:  ${colors.yellow};
 border: none;
 color:  ${colors.dark};
 font-weight:400;
-padding: .5rem 2.5rem;
-margin: 0;
+padding: .5rem 1.5rem;
+margin: 0.5rem;
 transition:all .35s ease;
 text-align: center;
 &:hover {
