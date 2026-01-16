@@ -97,7 +97,6 @@ const Projet = ({ data, pageContext, location }) => {
     to: { opacity:datesArchiveesOpen ? "1" : "0",padding:datesArchiveesOpen ? "2rem" : "0", height: datesArchiveesOpen ? "100%" : "0", backgroundColor:  datesArchiveesOpen ? '#EBEBF3' : '#fff'},
     })
 
-    {console.log("ST blocks",description2)}
 
   return (
     <Fragment>
