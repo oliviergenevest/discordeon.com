@@ -11,10 +11,11 @@ return (
     <iframe
       src={embedSrc}
       title={videoTitle}
-
+referrerPolicy="strict-origin-when-cross-origin"
       allow="accelerometer; autoplay;  gyroscope; "
       frameBorder="0"
-       width="450"
+       width="480"
+       height="270"
     />
     
   </div>
