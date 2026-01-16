@@ -117,7 +117,7 @@ const Projet = ({ data, pageContext, location }) => {
           {(description2.blocks.length >= 0 ) && <StructuredText
             data={description2}
             renderBlock={({record}) => {
-              console.log(record)
+             // console.log(record)
               if (record.__typename === "DatoCmsPlayerZik") {
                 return <Block>
                         <PlayerZik type={record.typeDeLecteur} urlPlayer={record.urlPlayer}/>

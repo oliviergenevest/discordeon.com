@@ -149,7 +149,7 @@ const NewsPage = ({ data }) => {
 
   const { titre, contenu, seoMetaTags } = data.page;
   const { nodes } = data.news; // toutes les news
-console.log(nodes);
+//console.log(nodes);
 
   return (
     <Fragment>
