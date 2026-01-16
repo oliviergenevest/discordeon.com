@@ -12,10 +12,8 @@ return (
       src={embedSrc}
       title={videoTitle}
 
-      //allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-      //frameBorder="0"
-   
-      allowFullScreen
+      allow="accelerometer; autoplay;  gyroscope; "
+      frameBorder="0"
        width="450"
     />
     
