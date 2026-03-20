@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import { graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
+
 import Seo from '../components/Seo';
 import {
   PageWrapper,
@@ -26,7 +27,7 @@ query  dataPrivacyQuery($locale: String){
 
 const DataPrivacyPage = ({data}) => {
   
-  const { titre, contenu, seoMetaTags } = data.page;
+  const { titre, contenu } = data.page;
 
   return (
     <Fragment>
@@ -44,7 +45,10 @@ const DataPrivacyPage = ({data}) => {
 
 export default  DataPrivacyPage
 
-
-export const Head = (props) => (
- <Seo meta={props.data.page.seoMetaTags} locale={props.pageContext.locale}  />
-)
+export const Head = (props) =>  { 
+  const data = useStaticQuery(dataPrivacyQuery);
+    const {  seoMetaTags } = data.page;
+  return(
+   <Seo meta={seoMetaTags} locale={props.pageContext.locale}  />
+) 
+}

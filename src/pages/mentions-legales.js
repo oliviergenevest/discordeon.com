@@ -27,7 +27,7 @@ const mentionsLegalesQuery = graphql`
 
 export default function MentionsLegalesPage() {
   const data = useStaticQuery(mentionsLegalesQuery);
-  const { titre, contenu, seoMetaTags } = data.page;
+  const { titre, contenu } = data.page;
 
   return (
     <Fragment>
@@ -44,6 +44,10 @@ export default function MentionsLegalesPage() {
   );
 }
 
-export const Head = (props) => (
- <Seo meta={props.data.page.seoMetaTags} locale={props.pageContext.locale}  />
-)
+export const Head = (props) =>  { 
+  const data = useStaticQuery(mentionsLegalesQuery);
+    const {  seoMetaTags } = data.page;
+  return(
+   <Seo meta={seoMetaTags} locale={props.pageContext.locale}  />
+) 
+}

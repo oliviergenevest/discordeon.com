@@ -21,9 +21,10 @@ const creditsQuery = graphql`
   }
 `;
 
-export default function CreditsPage() {
+export default function CreditsPage(props) {
+ 
   const data = useStaticQuery(creditsQuery);
-  const { titre, contenu, seoMetaTags } = data.page;
+  const { titre, contenu} = data.page;
 
   return (
     <Fragment>
@@ -41,7 +42,10 @@ export default function CreditsPage() {
 }
 
 
-export const Head = (props) => (
-   <Seo meta={props.data.page.seoMetaTags} locale={props.pageContext.locale}  />
-  
-)
+export const Head = (props) => { 
+  const data = useStaticQuery(creditsQuery);
+    const {  seoMetaTags } = data.page;
+  return(
+   <Seo meta={seoMetaTags} locale={props.pageContext.locale}  />
+) 
+}
