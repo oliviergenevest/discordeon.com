@@ -31,7 +31,7 @@ export default function MentionsLegalesPage() {
 
   return (
     <Fragment>
-      <Seo meta={seoMetaTags} />
+     
       <PageWrapper>
        
         <PageInner>
@@ -43,3 +43,7 @@ export default function MentionsLegalesPage() {
     </Fragment>
   );
 }
+
+export const Head = (props) => (
+ <Seo meta={props.data.page.seoMetaTags} locale={props.pageContext.locale}  />
+)

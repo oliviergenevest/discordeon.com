@@ -16,7 +16,7 @@ export const contactQuery = graphql`
   query contactQuery($locale: String) {
     
 
-    page: datoCmsContactPage(locale: {eq: $locale}) {
+    page: datoCmsContactPage(locale: $locale) {
       titre
       contenu
       
@@ -36,7 +36,7 @@ const ContactPage =  ({ data }) => {
 
   return (
     <Fragment>
-      <Seo meta={seoMetaTags} />
+      
       <PageWrapper>
         <PageInner>
           <PageTitle>{titre}</PageTitle>
@@ -62,3 +62,8 @@ const ContactPage =  ({ data }) => {
 }
 
 export default  ContactPage
+
+
+export const Head = (props) => (
+  <Seo meta={props.data.page.seoMetaTags} locale={props.pageContext.locale} />
+)

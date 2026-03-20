@@ -12,10 +12,10 @@ const Wrapper = styled.div`
 
 const NotFoundPage = () => (
   <Fragment>
-    <Seo title="404: Not found" />
+ 
     <Wrapper>
     <PageInner>
-      <PageTitle centered>Oups, page <span>introuvable</span></PageTitle>
+      <PageTitle $centered>Oups, page <span>introuvable</span></PageTitle>
       <Link to='/'>Retour à l'accueil</Link>
       </PageInner>
     </Wrapper>

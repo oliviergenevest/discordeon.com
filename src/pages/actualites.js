@@ -113,7 +113,7 @@ const StyledBtnPrimary = styled(BtnPrimary)`
 
 export const groupesQuery = graphql`
   query  groupesPageQuery($locale: String) {
-    page: datoCmsActualitePage(locale: {eq: $locale}) {
+    page: datoCmsActualitePage(locale: $locale) {
       titre
       contenu 
       seoMetaTags {
@@ -121,7 +121,7 @@ export const groupesQuery = graphql`
       }
     }
 
-    news: allDatoCmsActualite(filter: {locale: {eq: $locale}}, sort: {fields: meta___createdAt, order:DESC}){
+    news: allDatoCmsActualite(locale: $locale, sort: {meta: {createdAt: DESC}}){
       nodes {
         id
         meta {
@@ -153,10 +153,10 @@ const NewsPage = ({ data }) => {
 
   return (
     <Fragment>
-      <Seo meta={seoMetaTags} />
+  
       <PageWrapper>   
         <PageInner>
-          <PageTitle centered maxWidth dangerouslySetInnerHTML={{ __html: titre }}/>
+          <PageTitle $centered $maxWidth dangerouslySetInnerHTML={{ __html: titre }}/>
           <FocusText dangerouslySetInnerHTML={{ __html: contenu }}/>
           <NewsListWrapper>
             { _map(nodes, (item, i) => (
@@ -187,3 +187,8 @@ const NewsPage = ({ data }) => {
 }
 
 export default NewsPage;
+
+
+export const Head = (props) => (
+ <Seo meta={props.data.page.seoMetaTags} locale={props.pageContext.locale}  />
+)

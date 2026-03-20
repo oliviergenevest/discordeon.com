@@ -43,10 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
       graphql(`
         {
 
-          allDatoCmsProjet(
-          sort: {fields: meta___updatedAt,order: DESC}
-          filter: {locale: {eq: "fr"}}
-          ) 
+          allDatoCmsProjet(sort: {meta: {updatedAt: DESC}}, locale: "fr")
           {
             edges {
               node {
@@ -63,7 +60,7 @@ exports.createPages = async ({ graphql, actions }) => {
           const next = index === 0 ? null : projets[index - 1].node
           const { slug } = projet.node;
           createPage({
-            path: `/projets/${slug}`,
+            path: `/projets/${slug}/`,
             component: path.resolve('./src/templates/Projet.js'),
             context: {
               slug,
@@ -107,7 +104,7 @@ exports.createPages = async ({ graphql, actions }) => {
           const next = index === 0 ? null : projets[index - 1].node
           const { slug } = projet.node;
           createPage({
-            path: `/en/projets/${slug}`,
+            path: `/en/projets/${slug}/`,
             component: path.resolve('./src/templates/Projet.js'),
             context: {
               slug,
@@ -131,10 +128,7 @@ exports.createPages = async ({ graphql, actions }) => {
     try {
       graphql(`
         {
-          allDatoCmsActualite(
-            sort: {fields: meta___updatedAt,order: DESC}
-            filter: {locale: {eq: "fr"}}
-          ) 
+          allDatoCmsActualite(sort: {meta: {updatedAt: DESC}}, locale: "fr")
           {
             edges {
               node {
@@ -152,7 +146,7 @@ exports.createPages = async ({ graphql, actions }) => {
           const next = index === 0 ? null : news[index - 1].node
           const { slug } = item.node;
           createPage({
-            path: `/actualites/${slug}`,
+            path: `/actualites/${slug}/`,
             component: path.resolve('./src/templates/News.js'),
             context: {
               slug,

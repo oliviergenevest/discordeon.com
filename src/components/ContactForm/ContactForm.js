@@ -51,7 +51,7 @@ const ContactForm = ({invisible=false}) =>
 			action="/succes" 
 			method="POST" 
 			data-netlify="true" 
-			netlify-honeypot="bot-field" 
+			$netlify-honeypot="bot-field" 
 		>
 		   
 		   

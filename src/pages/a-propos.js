@@ -33,7 +33,7 @@ const EnSavoirPlus = styled(animated.div)`
 export const aProposPageQuery = graphql`
  query  aProposPageQuery($locale: String) {
    
-    page: datoCmsAProposPage(locale: {eq: $locale}) {
+    page: datoCmsAProposPage(locale: $locale) {
       titre
       aPropos
       biographie
@@ -74,12 +74,12 @@ const AProposPage = ({data}) => {
 
   return (
     <Fragment>
-      <Seo meta={seoMetaTags} />
+   
       <PageWrapper>
      
         <PageInner>
           <PageTitle dangerouslySetInnerHTML={{ __html: titre }} />
-          <FocusText maxWidth="700px"  dangerouslySetInnerHTML={{ __html: aPropos }} />
+          <FocusText $maxWidth="700px"  dangerouslySetInnerHTML={{ __html: aPropos }} />
           <Spacer/>
           <Spacer/>
        {/*  <Grid2Col>
@@ -116,3 +116,8 @@ const AProposPage = ({data}) => {
   );
 }
 export default AProposPage
+
+export const Head = (props) => 
+   (
+ <Seo meta={props.data.page.seoMetaTags} locale={props.pageContext.locale} />
+)

@@ -11,7 +11,7 @@ export const dataPrivacyQuery = graphql`
 query  dataPrivacyQuery($locale: String){
     
   
-    page: datoCmsPageDataProtection(locale: {eq: $locale}) {
+    page: datoCmsPageDataProtection(locale: $locale) {
       titre
       contenu
       seoMetaTags {
@@ -30,7 +30,7 @@ const DataPrivacyPage = ({data}) => {
 
   return (
     <Fragment>
-      <Seo meta={seoMetaTags} />
+    
       <PageWrapper>
        
         <PageInner>
@@ -43,3 +43,8 @@ const DataPrivacyPage = ({data}) => {
 }
 
 export default  DataPrivacyPage
+
+
+export const Head = (props) => (
+ <Seo meta={props.data.page.seoMetaTags} locale={props.pageContext.locale}  />
+)

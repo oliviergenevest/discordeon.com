@@ -100,7 +100,7 @@ const Projet = ({ data, pageContext, location }) => {
 
   return (
     <Fragment>
-      <Seo meta={seoMetaTags} />
+      <Seo meta={seoMetaTags} locale={pageContext.locale}  />
       
       <PageWrapper>
         <PageInner> <PageTitle>Projets</PageTitle></PageInner>
@@ -108,8 +108,8 @@ const Projet = ({ data, pageContext, location }) => {
         <PageInnerProject>
        
          
-          <Title maxWidth centered>{nom}</Title>
-          <FocusText centered dangerouslySetInnerHTML={{ __html:teaser }} />
+          <Title $maxWidth $centered>{nom}</Title>
+          <FocusText $centered dangerouslySetInnerHTML={{ __html:teaser }} />
           <GatsbyImage image={imagePrincipale.gatsbyImageData} alt={nom}  style={{marginBottom:"1rem",width:"100%"}}/>
 
          
@@ -130,7 +130,7 @@ const Projet = ({ data, pageContext, location }) => {
               }
               if (record.__typename === "DatoCmsBouton") {
                 return <Block>
-                    <BtnPrimary as="a" href={record.lienDuBouton} external>{record.texteDuBouton}</BtnPrimary>  
+                    <BtnPrimary as="a" href={record.lienDuBouton} $external>{record.texteDuBouton}</BtnPrimary>  
                   </Block> 
              }
               if (record.__typename === "DatoCmsVideo") {
@@ -195,7 +195,7 @@ const Projet = ({ data, pageContext, location }) => {
             <Text><h3>Pour les pros</h3></Text>
             {downloadFiles.map(file => (  
               <React.Fragment key={file.filename}>
-                  <BtnPrimary as="a" href={file.url} external>{file.filename}</BtnPrimary>   
+                  <BtnPrimary as="a" href={file.url} $external>{file.filename}</BtnPrimary>   
               </React.Fragment>
             ))}
           </GridItem>
@@ -276,7 +276,7 @@ const Projet = ({ data, pageContext, location }) => {
 
 export const projectQuery = graphql`
   query($slug: String!, $locale: String!) {
-    dates: allDatoCmsAgenda(filter: {locale: {eq: $locale}, projet: {slug: {eq: $slug}}}, sort: {order: ASC, fields: dateEvent}){
+    dates: allDatoCmsAgenda(locale: $locale, filter: {projet: {slug: {eq: $slug}}},  sort: {dateEvent: ASC}){
       nodes {
         id
         meta {
@@ -291,7 +291,7 @@ export const projectQuery = graphql`
         }
       }
     }
-    projet: datoCmsProjet(slug: { eq: $slug }, locale: {eq: $locale}) {
+    projet: datoCmsProjet(slug: { eq: $slug }, locale:  $locale) {
       nom
       description2 {
         value

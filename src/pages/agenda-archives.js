@@ -33,7 +33,7 @@ const StyledBtnPrimary = styled(BtnPrimary)`
 
 export const agendaQuery = graphql`
   query  agendaArchivesPageQuery($locale: String) {
-    page: datoCmsAgendaArchivesPage(locale: {eq: $locale}) {
+    page: datoCmsAgendaArchivesPage(locale: $locale) {
       titre
       contenu
       seoMetaTags {
@@ -41,7 +41,7 @@ export const agendaQuery = graphql`
       }
     }
 
-    agenda: allDatoCmsAgenda(filter: {locale: {eq: $locale}}, sort: {order: DESC, fields: dateEvent}){
+    agenda: allDatoCmsAgenda(locale: $locale, sort: {dateEvent: DESC}){
       nodes {
         id
         meta {
@@ -71,10 +71,10 @@ const AgendaArchivesPage = ({ data }) => {
 
   return (
     <Fragment>
-      <Seo meta={seoMetaTags} />
+    
       <PageWrapper>   
         <PageInner>
-          <PageTitle centered maxWidth dangerouslySetInnerHTML={{ __html: titre }}/>
+          <PageTitle $centered $maxWidth dangerouslySetInnerHTML={{ __html: titre }}/>
           <FocusText dangerouslySetInnerHTML={{ __html: contenu }}/>
           <AgendaListWrapper>
             { _map(nodes, (item, i) => (
@@ -90,4 +90,9 @@ const AgendaArchivesPage = ({ data }) => {
   );
 }
 
-export default AgendaArchivesPage;
+export default AgendaArchivesPage
+
+
+export const Head = (props) => (
+ <Seo meta={props.data.page.seoMetaTags} locale={props.pageContext.locale}  />
+)

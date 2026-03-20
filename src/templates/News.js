@@ -72,12 +72,12 @@ const News = ({ data, pageContext, location }) => {
 
   return (
     <Fragment>
-      <Seo meta={seoMetaTags} />
+      <Seo meta={seoMetaTags} locale={pageContext.locale} />
 
       <PageWrapper>
         <PageInner>
           <PageTitle>News</PageTitle>
-          <Title maxWidth centered>{titre}</Title>
+          <Title $maxWidth $centered>{titre}</Title>
           <Spacer /> 
           <div style={{textAlign:"center"}}>
             <Image image={image.gatsbyImageData} alt={titre} />
@@ -105,7 +105,7 @@ const News = ({ data, pageContext, location }) => {
 
 export const newsQuery = graphql`
   query($slug: String!, $locale: String!) {
-    news: datoCmsActualite(slug: { eq: $slug }, locale: { eq: $locale }) {
+    news: datoCmsActualite(slug: { eq: $slug }, locale: $locale) {
       titre
       seoMetaTags {
         ...GatsbyDatoCmsSeoMetaTags

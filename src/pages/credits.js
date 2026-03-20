@@ -27,7 +27,7 @@ export default function CreditsPage() {
 
   return (
     <Fragment>
-      <Seo meta={seoMetaTags} />
+      
       <PageWrapper>
        
         <PageInner>
@@ -39,3 +39,9 @@ export default function CreditsPage() {
     </Fragment>
   );
 }
+
+
+export const Head = (props) => (
+   <Seo meta={props.data.page.seoMetaTags} locale={props.pageContext.locale}  />
+  
+)

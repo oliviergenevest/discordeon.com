@@ -79,7 +79,7 @@ const VignetteProjetPerso = ({item, format, path='/projets/'}) => {
          <VignetteImage image={item.imagePrincipale.gatsbyImageData} alt={item.nom}/>  
           {format === "short" && <VignetteNom>{item.nom}</VignetteNom>}
           {format === "mini" && <VignetteNomSmall>{item.nom}</VignetteNomSmall>}
-          {format === "full" && <div style={{padding:".5rem 1rem 1rem 1rem"}}><VignetteNom center>{item.nom}</VignetteNom><VignetteTeaser>{item.teaser}</VignetteTeaser></div>}
+          {format === "full" && <div style={{padding:".5rem 1rem 1rem 1rem"}}><VignetteNom $center>{item.nom}</VignetteNom><VignetteTeaser>{item.teaser}</VignetteTeaser></div>}
         </ItemWrapper>
     )
 }

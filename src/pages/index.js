@@ -30,7 +30,7 @@ import  AgendaItemShort  from '../components/agenda/AgendaItemShort';
 
 export const indexQuery = graphql`
  query datoCmsAccueil($locale: String) {
-    datoCmsAccueilPage(locale: {eq: $locale}){
+    datoCmsAccueilPage(locale: $locale){
       teaser
       logo {
         title
@@ -70,7 +70,7 @@ export const indexQuery = graphql`
         ...GatsbyDatoCmsSeoMetaTags
       }
     }
-    projets : allDatoCmsProjet(filter: {locale: {eq: $locale}}) {
+    projets : allDatoCmsProjet(locale: $locale) {
       nodes {
         slug
         nom
@@ -87,7 +87,7 @@ export const indexQuery = graphql`
       }  
       
     }
-    news: allDatoCmsActualite(filter: {locale: {eq: $locale}}, limit: 1, sort: {fields: meta___createdAt, order:DESC}) {
+    news: allDatoCmsActualite(locale: $locale, limit: 1, sort: {meta: {createdAt: DESC}}) {
       nodes {
         id
         slug
@@ -109,7 +109,7 @@ export const indexQuery = graphql`
     }
 
 
-    agenda: allDatoCmsAgenda(filter: {locale: {eq: $locale}}, sort: {order: ASC, fields: dateEvent}){
+    agenda: allDatoCmsAgenda(locale: $locale, sort: {dateEvent: ASC}){
       nodes {
         id
         meta {
@@ -236,13 +236,13 @@ const IndexPage = ({ data, pageContext }) => {
 
   return (
     <Fragment>
-      <Seo meta={seoMetaTags} />
+      
       <Splash teaser={teaser}  logo={logo} />
       <PageWrapper id="top-content">
       <BgWrap color={colors.blueLight}>
           <PageInner>
           <Spacer/>
-              <SectionTitle centered   dangerouslySetInnerHTML={{ __html: titreDeLaSectionRegarderEcouter }}/>
+              <SectionTitle $centered   dangerouslySetInnerHTML={{ __html: titreDeLaSectionRegarderEcouter }}/>
 
               <Spacer/>
                 <Grid2Col>
@@ -277,7 +277,7 @@ const IndexPage = ({ data, pageContext }) => {
         <PageInner>
         <Grid2ColAsym>
           <div>
-                <PageTitle as="h2" centered >actu</PageTitle> 
+                <PageTitle as="h2" $centered >actu</PageTitle> 
                 { _map(data.news.nodes, (lastnews, i) => (
                   
                 <News key={i}>
@@ -302,7 +302,7 @@ const IndexPage = ({ data, pageContext }) => {
 
           </div>
           <div> 
-                  <PageTitle centered  dangerouslySetInnerHTML={{ __html: titreDeLaSectionAgenda }}/>
+                  <PageTitle $centered  dangerouslySetInnerHTML={{ __html: titreDeLaSectionAgenda }}/>
                   <AgendaListWrapper>
 
                   { _map(dateFutures, (item, i) => {
@@ -327,7 +327,7 @@ const IndexPage = ({ data, pageContext }) => {
           
            
             <PageInner>
-            <PageTitle as="h2" centered >projets</PageTitle> 
+            <PageTitle as="h2" $centered >projets</PageTitle> 
               <GridProjets>
                 { _map(data.projets.nodes, (item, i) => (
                       <VignetteProjetPerso key={i} item={item} format="mini" path="/projets/" />
@@ -349,3 +349,7 @@ const IndexPage = ({ data, pageContext }) => {
 
 
 export default IndexPage
+
+export const Head = (props) =>(
+ <Seo meta={props.data.datoCmsAccueilPage.seoMetaTags} locale={props.pageContext.locale} />
+)

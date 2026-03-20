@@ -7,11 +7,15 @@ module.exports = {
   siteMetadata: { 
     ...siteConfig,
   },
-  
+  trailingSlash: `always`, 
   plugins: [
     `gatsby-transformer-remark`,
-    `gatsby-plugin-sass`,
-    `gatsby-plugin-react-helmet`,
+     {resolve:`gatsby-plugin-sass`,
+          options: {
+           implementation: require("sass"),
+         },
+       },
+
     `gatsby-plugin-robots-txt`,
     `gatsby-plugin-netlify`,
 
@@ -24,50 +28,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-sitemap`,
       
-    },/*
-    {
-      resolve: `gatsby-plugin-google-gtag`,
-      options: {
-        // You can add multiple tracking ids and a pageview event will be fired for all of them.
-        trackingIds: [
-          "GA-TRACKING_ID", // Google Analytics / GA
-          "AW-CONVERSION_ID", // Google Ads / Adwords / AW
-          "DC-FLOODIGHT_ID", // Marketing Platform advertising products (Display & Video 360, Search Ads 360, and Campaign Manager)
-        ],
-        // This object gets passed directly to the gtag config command
-        // This config will be shared across all trackingIds
-        gtagConfig: {
-          optimize_id: "OPT_CONTAINER_ID",
-          anonymize_ip: true,
-          cookie_expires: 0,
-        },
-        // This object is used for configuration specific to this plugin
-        pluginConfig: {
-          // Puts tracking script in the head instead of the body
-          head: true,
-          // Setting this parameter is also optional
-          respectDNT: true,
-          // Avoids sending pageview hits from custom paths
-          exclude: ["/preview/**", "/do-not-track/me/too/"],
-          // Defaults to https://www.googletagmanager.com
-          origin: "YOUR_SELF_HOSTED_ORIGIN",
-        },
-      },
     },
-    {
-      resolve: `gatsby-plugin-gdpr-cookies`,
-      options: {
-      
-       googleTagManager: {
-          trackingId: 'GTM-000000', // leave empty if you want to disable the tracker
-          cookieName: 'gatsby-gdpr-google-tagmanager', // default
-          dataLayerName: 'dataLayer', // default
-        },
-
-        // defines the environments where the tracking should be available  - default is ["production"]
-        environments: ['production', 'development']
-      },
-    },*/
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -90,9 +51,18 @@ module.exports = {
       },
     },
      {
-      resolve: 'gatsby-source-datocms',
+      resolve: `gatsby-source-datocms`,
       options: {
+        // You can find your read-only API token under the Settings > API tokens
+        // section of your administrative area. Make sure to grant both CDA and CMA permissions.
         apiToken: process.env.DATO_CMS_KEY,
+        // The project environment to read from. Defaults to the primary environment:
+        environment: `main`,
+        // If you are working on development/staging environment, you might want to
+        // preview the latest version of records instead of the published one:
+        previewMode: false,
+        // Disable automatic reloading of content when some change occurs on DatoCMS:
+        disableLiveReload: false,
       },
     },
     {

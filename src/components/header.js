@@ -281,19 +281,19 @@ export default function Header({ location }) {
         <MainMenu>
          
           <MenuItem>
-            <LinkHeader to="/actualites" activeClassName="active"><FormattedMessage id="menu__actu"/></LinkHeader>
+            <LinkHeader to="/actualites/" activeClassName="active"><FormattedMessage id="menu__actu"/></LinkHeader>
           </MenuItem>
           <MenuItem>
-            <LinkHeader to="/projets" activeClassName="active"><FormattedMessage id="menu__projets"/></LinkHeader>
+            <LinkHeader to="/projets/" activeClassName="active"><FormattedMessage id="menu__projets"/></LinkHeader>
           </MenuItem>
            <MenuItem>
-            <LinkHeader to="/agenda" activeClassName="active"><FormattedMessage id="menu__agenda"/></LinkHeader>
+            <LinkHeader to="/agenda/" activeClassName="active"><FormattedMessage id="menu__agenda"/></LinkHeader>
           </MenuItem>
            <MenuItem>
-            <LinkHeader to="/a-propos" activeClassName="active"><FormattedMessage id="menu__a-propos"/></LinkHeader>
+            <LinkHeader to="/a-propos/" activeClassName="active"><FormattedMessage id="menu__a-propos"/></LinkHeader>
           </MenuItem>
           <MenuItem>
-            <LinkHeader to="/contact" activeClassName="active"><FormattedMessage id="menu__contact"/></LinkHeader>
+            <LinkHeader to="/contact/" activeClassName="active"><FormattedMessage id="menu__contact"/></LinkHeader>
           </MenuItem>
           <MenuItem>
             <IconLink to="https://www.facebook.com/discordeon" icon={<Icon title="Facebook" icon={facebookRect} style={{color: colors.yellow, fontSize: '20px'}} />}  text="Facebook"/>     
@@ -317,19 +317,19 @@ export default function Header({ location }) {
               <LinkHeader to="/" ><FormattedMessage id="homepage"/></LinkHeader>
             </ItemMobileNav>
             <ItemMobileNav onClick={() => {setMobileNavOpen(!mobileNavOpen)}} >
-              <LinkHeader to="/actualites" activeClassName="active"><FormattedMessage id="menu__actu"/></LinkHeader>
+              <LinkHeader to="/actualites/" activeClassName="active"><FormattedMessage id="menu__actu"/></LinkHeader>
             </ItemMobileNav>
             <ItemMobileNav onClick={() => {setMobileNavOpen(!mobileNavOpen)}} >
-                <LinkHeader to="/projets" activeClassName="active"><FormattedMessage id="menu__projets"/></LinkHeader>
+                <LinkHeader to="/projets/" activeClassName="active"><FormattedMessage id="menu__projets"/></LinkHeader>
             </ItemMobileNav>
             <ItemMobileNav onClick={() => {setMobileNavOpen(!mobileNavOpen)}} >
-            <LinkHeader to="/agenda" activeClassName="active"><FormattedMessage id="menu__agenda"/></LinkHeader>
+            <LinkHeader to="/agenda/" activeClassName="active"><FormattedMessage id="menu__agenda"/></LinkHeader>
             </ItemMobileNav>  
             <ItemMobileNav onClick={() => {setMobileNavOpen(!mobileNavOpen)}} >
-              <LinkHeader to="/a-propos" activeClassName="active"><FormattedMessage id="menu__a-propos"/></LinkHeader>
+              <LinkHeader to="/a-propos/" activeClassName="active"><FormattedMessage id="menu__a-propos"/></LinkHeader>
             </ItemMobileNav>
             <ItemMobileNav onClick={() => {setMobileNavOpen(!mobileNavOpen)}} >
-                <LinkHeader to="/contact" activeClassName="active"><FormattedMessage id="menu__contact"/></LinkHeader> 
+                <LinkHeader to="/contact/" activeClassName="active"><FormattedMessage id="menu__contact"/></LinkHeader> 
             </ItemMobileNav>
             <ItemMobileNav>
               <IconLink to="https://www.facebook.com/discordeon" icon={<Icon title="Facebook" icon={facebookRect} style={{color: colors.yellow, fontSize: '28px', margin:'10px'}} />}  text="Facebook"/>     

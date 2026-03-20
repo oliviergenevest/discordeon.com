@@ -52,7 +52,7 @@ export const projetsPageQuery = graphql`
   query projetsQuery($locale: String) {
     
 
-    page: datoCmsPageProjet(locale: {eq: $locale}) {
+    page: datoCmsPageProjet(locale: $locale) {
       titre
       titreProjetsPersos
       descriptionProjetsPersos
@@ -124,7 +124,7 @@ const ProjetsPage =  ({ data }) => {
 
   return (
     <Fragment>
-      <Seo meta={seoMetaTags} />
+    
       <PageWrapper>
       
         
@@ -180,3 +180,8 @@ const ProjetsPage =  ({ data }) => {
 }
 
 export default  ProjetsPage
+
+
+export const Head = (props) => (
+ <Seo meta={props.data.page.seoMetaTags} locale={props.pageContext.locale} />
+)
