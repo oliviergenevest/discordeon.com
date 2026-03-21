@@ -16,9 +16,7 @@ module.exports = {
          },
        },
 
-    `gatsby-plugin-robots-txt`,
-    `gatsby-plugin-netlify`,
-
+   
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {
@@ -77,8 +75,6 @@ module.exports = {
         icon: `src/images/discordeon-d.jpg`, // This path is relative to the root of the site.
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-   //  `gatsby-plugin-offline`,
+   
   ],
 }
