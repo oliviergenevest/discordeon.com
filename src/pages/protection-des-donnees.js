@@ -8,7 +8,7 @@ import {
   PageTitle,
 } from '../components/Elements';
 
-export const dataPrivacyQuery = graphql`
+const dataPrivacyQuery = graphql`
 query  dataPrivacyQuery($locale: String){
     
   
@@ -25,8 +25,8 @@ query  dataPrivacyQuery($locale: String){
 
 
 
-const DataPrivacyPage = ({data}) => {
-  
+const DataPrivacyPage = () => {
+    const data = useStaticQuery(dataPrivacyQuery);
   const { titre, contenu } = data.page;
 
   return (
@@ -48,6 +48,8 @@ export default  DataPrivacyPage
 export const Head = (props) =>  { 
   const data = useStaticQuery(dataPrivacyQuery);
     const {  seoMetaTags } = data.page;
+    console.log("data ",data)
+    console.log("props ",props)
   return(
    <Seo meta={seoMetaTags} locale={props.pageContext.locale}  />
 ) 
