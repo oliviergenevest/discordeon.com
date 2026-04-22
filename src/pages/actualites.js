@@ -121,7 +121,7 @@ export const groupesQuery = graphql`
       }
     }
 
-    news: allDatoCmsActualite(locale: $locale, sort: {meta: {createdAt: ASC}}){
+    news: allDatoCmsActualite(locale: $locale, sort: {meta: {createdAt: DESC}}){
       nodes {
         id
         meta {
